@@ -49,6 +49,8 @@ class Hospital extends MY_Controller {
        $email = $this->input->post('emailId');
        $this->Hospital_model->checkUserExistence($email);
    }
+   
+   // get hospital detail
    function detailHospital($hospitalId=''){
         $data = array();
         $data['hospitalData'] = $this->Hospital_model->fetchHospitalData($hospitalId);
