@@ -309,6 +309,7 @@ if(!function_exists("defalutTimeSlots")){
     function defalutTimeSlots(){
         $defaultSlot  = array();
         for($k=0;$k<4;$k++){
+            
             $startTime = "";
             $endTime = "";
             
@@ -317,15 +318,15 @@ if(!function_exists("defalutTimeSlots")){
                     $startTime = "06:00:00";
                     $endTime = "11:59:00";
                     break;
-                case 0:
+                case 1:
                     $startTime = "12:00:00";
                     $endTime = "17:59:00";
                     break;
-                case 0:
+                case 2:
                     $startTime = "18:00:00";
                     $endTime = "22:59:00";
                     break;
-                case 0:
+                case 3:
                     $startTime = "23:00:00";
                     $endTime = "05:59:00";
                     break;
