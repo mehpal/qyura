@@ -652,7 +652,7 @@
                                                                     foreach($insurance as $key => $val){    
                                                                  ?>
                                                                 <div class="col-md-3 col-sm-6 part-ins">
-                                                                    <a class="delete-ins"><i class="fa fa-close"></i></a>
+                                                                    <a class="delete-ins" href="javascript:void(0)" onclick="deletInsurance(<?php echo $val->hospitalInsurance_id;?>)"><i class="fa fa-close"></i></a>
                                                                     <img src="<?php echo base_url()?>assets/insurance/<?php echo $val->insurance_img;?>" class="img-responsive center-block img-ins">
                                                                     <h5><?php echo $val->insurance_Name;?></h5>
                                                                 </div>
