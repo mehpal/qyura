@@ -27,7 +27,7 @@
                                     </figure>
                                     <!-- Table Section End -->
                                     <div class="clearfix m-t-20">
-                                        <article class="form-group m-lr-0 ">
+                                        <article class="clearfix m-t-10">
                                             <label for="doctors_unqId" class="control-label col-md-4 col-sm-4">Doctor Id :</label>
                                             <div class="col-md-8 col-sm-8">
                                                 <input class="form-control disabled" id="doctors_unqId" name="doctors_unqId" type="disabled" required="" aria-required="true" placeholder="ACM304" readonly="readonly" value="<?php echo set_value('doctors_unqId'); ?>">
@@ -44,7 +44,7 @@
                                                 <label class="error" > <?php echo $this->session->flashdata('valid_upload'); ?></label>
                                             </div>
                                         </article>-->
-                                        <article class="form-group m-lr-0 ">
+                                        <article class="clearfix">
                                         <label class="control-label col-md-4 col-sm-4" for="cemail">Upload Logo :</label>
                                         <div class="col-md-8 col-sm-8 text-right">
                                             <label for="file-input"><i style="border:1px solid #777777; padding:10px;" class="fa fa-cloud-upload fa-3x avatar-view"></i></label>
@@ -58,7 +58,7 @@
                                         </div>
                                     </article>
 
-                                        <article class="form-group m-lr-0">
+                                        <article class="clearfix m-t-10">
                                             <label for="" class="control-label col-md-4 col-sm-4">First Name :</label>
                                             <div class="col-md-8 col-sm-8">
                                                 <input class="form-control " id="doctors_fName" type="text" name="doctors_fName" value="<?php echo set_value('doctors_fName'); ?>">
@@ -67,7 +67,7 @@
                                             </div>
                                         </article>
 
-                                        <article class="form-group m-lr-0">
+                                        <article class="clearfix">
                                             <label for="" class="control-label col-md-4 col-sm-4">Last Name :</label>
                                             <div class="col-md-8 col-sm-8">
                                                 <input class="form-control " id="doctors_lName" type="text" name="doctors_lName" value="<?php echo set_value('doctors_lName'); ?>" />
@@ -76,7 +76,7 @@
                                             </div>
                                         </article>
 
-                                        <article class="form-group m-lr-0">
+                                        <article class="clearfix">
                                             <label for="cname" class="control-label col-md-4 col-sm-4">Date of Birth :</label>
                                             <div class="col-md-8 col-sm-8">
                                                 <div class="input-group">
@@ -88,7 +88,7 @@
                                             </div>
                                         </article>
 
-                                        <article class="form-group m-lr-0">
+                                        <article class="clearfix m-t-10">
                                             <label for="" class="control-label col-md-4 col-sm-4">Speciality:</label>
                                             <div class="col-md-8 col-sm-8">
                                                 <!--<input class="form-control " id="emailId" type="text" name="speciality" placeholder="Add Speciality">
@@ -110,7 +110,7 @@
 
 
                                         <div id="multiplePhoneNumber">
-                                        <article class="form-group m-lr-0">
+                                        <article class="clearfix">
                                             <label for="cname" class="control-label col-md-4 col-sm-4">Landline Phone:</label>
                                              
                                             <div class="col-md-8 col-sm-8">
@@ -138,7 +138,7 @@
                                         </div>    
                                          <div id='multipleMobile'>
                                              
-                                        <article class="form-group m-lr-0">
+                                        <article class="clearfix m-t-10">
                                             <label for="cname" class="control-label col-md-4 col-sm-4">Mobile:</label>
                                             <div class="col-md-8 col-sm-8">
                                                 
@@ -169,17 +169,18 @@
                                        
                                          </div>     
          
-                                        <article class="form-group m-lr-0">
+                                        <article class="clearfix m-t-10">
                                             <label for="cname" class="control-label col-md-4 col-sm-4">Address:</label>
                                             <div class="col-md-8 col-sm-8">
-                                                <aside class="row">
-                                                    <div class="col-md-6 col-sm-6">
-                                                        <select class="selectpicker" data-width="100%" name="doctors_countryId" id="doctors_countryId">
+                                                        <select class="form-control selectpicker" data-width="100%" name="doctors_countryId" id="doctors_countryId">
                                                             <option value="1">India</option>
                                                            
                                                         </select>
-                                                    </div>
-                                                     <div class="col-md-6 col-sm-6 m-t-xs-10">
+                                            </div>
+                                        </article>
+
+                                        <article class="clearfix m-t-10"> 
+                                            <div class="col-sm-8 col-sm-offset-4">
                                                         <select class="selectpicker" data-width="100%" name="doctors_stateId" Id="doctors_stateId" data-size="4" onchange ="fetchCity(this.value)">
                                                         <option value="">Select State</option>
                                                        <?php foreach($allStates as $key=>$val) {?>
@@ -188,39 +189,36 @@
                                                     </select>
                                                     <label class="error" style="display:none;" id="error-doctors_stateId"> please select a state</label>
                                                     <label class="error" > <?php echo form_error("doctors_stateId"); ?></label>
-                                                </div>
-                                                </aside>
                                             </div>
                                         </article>
 
-                                        <article class="form-group m-lr-0">
+                                        <article class="clearfix">
                                             <div class="col-md-8 col-md-offset-4 col-sm-4 col-sm-offset-4">
-                                                <aside class="row">
-                                                    <div class="col-md-6 col-sm-6">
-                                                        <select class="selectpicker" data-width="100%" name="doctors_cityId" id="doctors_cityId" data-size="4" >
+                                                        <select class="form-control selectpicker" data-width="100%" name="doctors_cityId" id="doctors_cityId" data-size="4" >
                                                             <!--<option>Kolkata</option>
                                                             <option>Delhi</option>-->
                                                         </select>
-                                                         <label class="error" style="display:none;" id="error-doctors_cityId"> please select a state</label>
+                                                         <label class="error" style="display:none;" id="error-doctors_cityId"> please select a city</label>
                                                         <label class="error" > <?php echo form_error("doctors_cityId"); ?></label>
-                                                    </div>
-                                                    <div class="col-md-6 col-sm-6 m-t-xs-10">
-                                                        <input type="text" class="form-control" id="doctors_pinn" name="doctors_pinn" placeholder="700001" maxlength="6" onkeypress="return isNumberKey(event)" value="<?php echo set_value('doctors_pinn'); ?>" />
-                                                        <label class="error" style="display:none;" id="error-doctors_pinn"> Zip code should be numeric and 6 digit long</label>
-                                                        <label class="error" > <?php echo form_error("doctors_pinn"); ?></label>
-                                                    </div>
-                                                </aside>
                                             </div>
                                         </article>
 
-                                        <article class="form-group m-lr-0">
+                                        <article class="clearfix">
+                                            <div class="col-md-8 col-md-offset-4 col-sm-4 col-sm-offset-4">
+                                                        <input type="text" class="form-control" id="doctors_pinn" name="doctors_pinn" placeholder="700001" maxlength="6" onkeypress="return isNumberKey(event)" value="<?php echo set_value('doctors_pinn'); ?>" />
+                                                        <label class="error" style="display:none;" id="error-doctors_pinn"> Zip code should be numeric and 6 digit long</label>
+                                                        <label class="error" > <?php echo form_error("doctors_pinn"); ?></label>
+                                            </div>
+                                        </article>
+
+                                        <article class="clearfix">
                                             <div class="col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4">
                                                 <input type="text" class="form-control" id="geocomplete" name="doctor_addr" placeholder="209, ABC Road, near XYZ Building " value="<?php echo set_value('doctor_addr'); ?>" />
                                                 <label class="error" style="display:none;" id="error-doctor_addr"> please select a pin number</label>
                                                   <label class="error" > <?php echo form_error("doctor_addr"); ?></label>
                                             </div>
                                         </article>
-                                        <article class="form-group m-lr-0">
+                                        <article class="clearfix">
                                             <label for="" class="control-label col-md-4 col-sm-4">Consultation Fee :</label>
                                             <div class="col-md-8 col-sm-8">
                                                 <input class="form-control" id="doctors_consultaionFee" name="doctors_consultaionFee" type="text" onkeypress="return isNumberKey(event)" value="<?php echo set_value('doctors_consultaionFee'); ?>" maxlength="7"/>
@@ -236,13 +234,13 @@
                                                 <label class="error" > <?php echo form_error("doctors_service[]"); ?></label>
                                             </div>
                                         </article>-->
-                                        <article class="form-group m-lr-0">
+                                        <article class="clearfix">
                                             <div class="col-md-8 col-md-offset-4">
                                                <!-- <button class="btn btn-danger waves-effect" type="button">Delete</button> -->
                                                 <button class="btn btn-success waves-effect waves-light m-r-20" type="button" onclick="multipleService()">Add More</button>
                                             </div>
                                         </article>
-                                        <article class="form-group m-lr-0">
+                                        <article class="clearfix m-t-10 p-b-20">
                                             <label for="cname" class="control-label col-md-4 col-sm-4"> Doctor On Call ? </label>
                                             <div class="col-md-8 col-sm-8">
                                                 <aside class="radio radio-info radio-inline">
@@ -276,14 +274,15 @@
                                     </figure>
                                     <aside class="clearfix m-t-20">
 
-                                        <article class="form-group m-lr-0">
+                                        <article class="clearfix m-t-10">
                                             <div class="col-md-12">
                                                 <div id="parentDegreeDiv">
                                                     <div id="childDegreeDiv1">
-                                                        <aside class="row">
+                                                        
+                                                        <aside class="clearfix m-t-10">
                                                             <label for="cname" class="control-label col-md-4">Degree</label>
-                                                            <div class="col-md-4 col-sm-4">
-                                                                <select class="selectpicker" data-width="100%" data-size="4" name="doctorAcademic_degreeId[]" id="doctorAcademic_degreeId1">
+                                                            <div class="col-md-8 col-sm-8">
+                                                                <select class="form-coltrol selectpicker" data-width="100%" data-size="4" name="doctorAcademic_degreeId[]" id="doctorAcademic_degreeId1">
                                                                      <option value="">Select Degree </option>
                                                                     <?php foreach($degree as $key=>$val){?>
                                                                     <option value="<?php echo $val->degree_id;?>"><?php echo $val->degree_SName;?></option>
@@ -291,8 +290,11 @@
                                                                 </select>
                                                                 <label class="error" style="display:none;" id="error-doctorAcademic_degreeId1"> please select Degree</label>
                                                             </div>
-                                                            <div class="col-md-4 col-sm-4 m-t-xs-10">
-                                                                <select class="selectpicker" data-width="100%" data-size="4" name="doctorSpecialities_specialitiesCatId[]" id="doctorSpecialities_specialitiesCatId1">
+                                                        </aside>
+
+                                                      <aside class="clearfix m-t-10">
+                                                            <div class="col-sm-8 col-sm-offset-4">
+                                                                <select class="form-control selectpicker" data-width="100%" data-size="4" name="doctorSpecialities_specialitiesCatId[]" id="doctorSpecialities_specialitiesCatId1">
                                                                       <option value="">Select Specialities </option>
                                                                     <?php foreach($speciality as $key=>$val) {?>
                                                                 <option value="<?php echo $val->specialities_id;?>"><?php echo $val->specialities_name;?></option>
@@ -301,19 +303,19 @@
                                                                 <label class="error" style="display:none;" id="error-doctorSpecialities_specialitiesCatId1"> please select Specialities</label>
                                                             </div>
                                                         </aside>
-                                                        <aside class="row">
-                                                            <label for="cname" class="control-label col-md-4 m-t-20">Address</label>
+
+                                                        <aside class="clearfix">
+                                                            <label for="cname" class="control-label col-md-4">Address</label>
                                                             <div class="col-md-8 col-sm-8 m-t-20">
                                                                 <textarea class="form-control" id="acdemic_addaddress1" name="acdemic_addaddress[]" required=""></textarea>
                                                                 <label class="error" id="err_acdemic_addaddress1" > <?php echo form_error("acdemic_addaddress1"); ?></label>
                                                             </div>
                                                             <label for="cname" class="control-label col-md-4">Year</label>
-                                                            <div class="col-md-8 col-sm-8 m-b-20">
+                                                            <div class="col-md-8 col-sm-8">
                                                                 <input class="form-control" name="acdemic_addyear[]" required="" id="acdemic_addyear1" value="" onkeypress="return isNumberKey(event)">
                                                                 <label class="error" id="err_addacdemic_year1" > <?php echo form_error("acdemic_addyear1"); ?></label>
                                                             </div>
                                                         </aside>
-                                                        <br />
                                                     </div>       
                                                 </div>     
                                             </div>
@@ -340,7 +342,7 @@
                                             </div>
                                         </article> -->
 
-                                        <article class="form-group m-lr-0">
+                                        <article class="clearfix p-b-20">
                                             <div class="col-md-8 col-md-offset-4">
                                                <!-- <button class="btn btn-danger waves-effect" type="button">Delete</button> -->
                                                 <button class="btn btn-success waves-effect waves-light m-r-20" type="button" onclick="multipleAcademic()">Add More</button>
@@ -356,12 +358,12 @@
                                         <figure class="clearfix">
                                             <h3>Professional Experience</h3>
                                         </figure>
-                                        <aside class="clearfix m-t-20">
+                                        <aside class="clearfix m-t-20 p-b-20">
                                             
                                             
                                             <div id="parentDIV"> 
                                                 <div id="child1">
-                                                    <article class="form-group m-lr-0">
+                                                    <article class="clearfix m-t-10">
                                                     <label for="cname" class="control-label col-md-4">Duration:</label>
                                                     <div class="col-md-8">
                                                         <aside class="row">
@@ -383,7 +385,7 @@
                                                     </div>
                                                 </article>
 
-                                                    <article class="form-group m-lr-0">
+                                                    <article class="clearfix m-t-10">
                                                         <div class="col-md-8 col-md-offset-4">
                                                             <select class="select2" data-width="100%" onchange="fetchHospitalSpeciality(this.value,1)" name="professionalExp_hospitalId1" id="HospitalSpecialityId">
                                                                 <option value="">Select Hospital </option>
@@ -396,7 +398,7 @@
                                                         
                                                     </article>
 
-                                                    <article class="form-group m-lr-0 " >
+                                                    <article class="clearfix m-t-10" >
 
                                                         <div class="col-md-8 col-md-offset-4">
                                                            <!-- <input class="form-control " id="speciality" type="text" name="speciality" placeholder="Add Speciality" readonly="readonly">
@@ -413,7 +415,7 @@
                                             </div>    
 
 
-                                            <article class="form-group m-lr-0">
+                                            <article class="clearfix m-t-10">
                                                 <div class="col-md-8 col-md-offset-4">
                                                     <button class="btn btn-success waves-effect waves-light m-r-20" type="button" onclick="multipleProfessionalExp()">Add More</button>
                                                 </div>

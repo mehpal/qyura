@@ -210,7 +210,7 @@
                                                                                 <option value="1" <?php if($moreExpolde[0] == '1'){ echo 'selected';}?>>+1</option>
                                                                             </select>
                                                                         </div>
-                                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10 m-t-xs-10">
+                                                                        <div class="col-lg-9 col-md-8 col-sm-9 col-xs-10 m-t-xs-10">
                                                                             <input type="text" class="form-control" name="bloodBank_phn[]" id="bloodBank_phn<?php echo $i;?>" placeholder="9837000123" value="<?php echo $moreExpolde[1];?>" maxlength="10" onblur="checkNumber(<?php echo $i;?>)"/>
                                                                         </div>
                                                                        

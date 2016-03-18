@@ -116,7 +116,7 @@
                                         </div>
                                     </article>
 
-                                    <article class="clearfix">
+                                    <article class="clearfix m-t-10">
                                         <div class="col-sm-8 col-sm-offset-4">
                                            <aside class="row">
                                              <div class="col-sm-6">
