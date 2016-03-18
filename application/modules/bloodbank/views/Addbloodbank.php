@@ -26,7 +26,7 @@
                                 </figure>
                                 <!-- Table Section End -->
                                 <div class="clearfix m-t-20 p-b-20">
-                                    <article class="form-group m-lr-0 ">
+                                    <article class="clearfix m-t-10">
                                         <label for="cemail" class="control-label col-md-4 col-sm-4">Blood Bank Name :</label>
                                         <div class="col-md-8 col-sm-8">
                                             <input class="form-control" id="bloodBank_name" name="bloodBank_name" type="text" required="" maxlength="30" value="<?php echo set_value('bloodBank_name'); ?>">
@@ -34,7 +34,7 @@
                                             <label class="error" > <?php echo form_error("bloodBank_name"); ?></label>
                                         </div>
                                     </article>
-                                    <article class="form-group m-lr-0 ">
+                                    <article class="clearfix m-t-10">
                                         <label class="control-label col-md-4 col-sm-4" for="cemail">Upload Logo :</label>
                                         <div class="col-md-8 col-sm-8 text-right">
                                             <label for="file-input"><i style="border:1px solid #777777; padding:10px;" class="fa fa-cloud-upload fa-3x avatar-view"></i></label>
@@ -48,20 +48,21 @@
                                     </article>
 
 
-                                    <article class="form-group m-lr-0">
+                                    <article class="clearfix m-t-10">
                                         <label for="cname" class="control-label col-md-4 col-sm-4">Address:</label>
                                         <div class="col-md-8 col-sm-8">
-                                            <aside class="row">
-                                                <div class="col-md-6 col-sm-6">
-                                                    <select class="selectpicker" data-width="100%" name="countryId" id="countryId">
+                                                    <select class="form-control selectpicker" data-width="100%" name="countryId" id="countryId">
                                                         <option value=''>Select Country</option>
                                                         <option value="1">INDIA</option>
                                                         
                                                     </select>
                                                     <label class="error" style="display:none;" id="error-countryId"> please select a country</label>
                                                     <label class="error" > <?php echo form_error("countryId"); ?></label>
-                                                </div>
-                                                <div class="col-md-6 col-sm-6 m-t-xs-10">
+                                         </div>
+                                    </article>
+
+                                    <article class="clearfix">
+                                        <div class="col-md-8 col-sm-8 col-sm-offset-4">
                                                     <select class="selectpicker" data-width="100%" name="stateId" Id="stateId" data-size="4" onchange ="fetchCity(this.value)">
                                                         <option value="">Select State</option>
                                                        <?php foreach($allStates as $key=>$val) {?>
@@ -70,34 +71,30 @@
                                                     </select>
                                                     <label class="error" style="display:none;" id="error-stateId"> please select a state</label>
                                                     <label class="error" > <?php echo form_error("stateId"); ?></label>
-                                                </div>
-                                            </aside>
                                         </div>
                                     </article>
 
-                                    <article class="form-group m-lr-0">
+                                    <article class="clearfix">
                                         <div class="col-sm-8 col-sm-offset-4">
-                                            <aside class="row">
-                                                <div class="col-md-6 col-sm-6">
                                                     <select class="selectpicker" data-width="100%" name="cityId" id="cityId" data-size="4">
                                                         <!--<option>Select City</option>
                                                         <option>Kolkata</option>
                                                         <option>Delhi</option>-->
                                                     </select>
                                                     <label class="error" style="display:none;" id="error-cityId"> please select a city</label>
-
-                                                </div>
-                                                <div class="col-md-6 col-sm-6 m-t-xs-10">
+                                        </div>
+                                    </article>
+                        
+                                    <article class="clearfix m-t-10">
+                                        <div class="col-sm-8 col-sm-offset-4">
                                                     <input type="text" class="form-control" id="bloodBank_zip" name="bloodBank_zip" placeholder="700001" maxlength="6" value="<?php echo set_value('bloodBank_zip'); ?>" onkeypress="return isNumberKey(event)"/>
                                                 <label class="error" style="display:none;" id="error-bloodBank_zip"> zip code should be numeric and 6 digit long</label>                                               <label class="error" > <?php echo form_error("bloodBank_zip"); ?></label>
                                                 </div>
-                                            </aside>
-                                        </div>
                                     </article>
                                     
                                     
-                                     <article class="form-group m-lr-0 checkManual">
-                                                <label class="control-label col-md-4" for="cname">manual</label>
+                                     <article class="clearfix checkManual">
+                                                <label class="control-label col-md-4" for="cname">Manual:</label>
                                                 <div class="col-md-8">
                                                     <aside class="radio radio-info radio-inline">
                                                         <input type="radio"  name="isManual" value="1" id="isManual" onclick="IsAdrManual(this.value)">
@@ -110,22 +107,33 @@
                                                 </div>
                                             </article>
 
-                                    <article class="form-group m-lr-0">
+                                    <article class="clearfix m-t-10">
                                         <div class="col-sm-8 col-sm-offset-4">
                                             <input type="text" class="form-control" name="bloodBank_add" id="geocomplete" placeholder="209, ABC Road, near XYZ Building " value="<?php echo set_value('bloodBank_add'); ?>"/>
                                         <label class="error" style="display:none;" id="error-bloodBank_add"> please enter an address</label>
                                             <label class="error" > <?php echo form_error("bloodBank_add"); ?></label>
                                             
-                                             <input name="lat" required="" type="text" value="<?php echo set_value('lat'); ?>"  id="lat" readonly=""  />
+                                        </div>
+                                    </article>
+
+                                    <article class="clearfix">
+                                        <div class="col-sm-8 col-sm-offset-4">
+                                           <aside class="row">
+                                             <div class="col-sm-6">
+                                             <input name="lat" class="form-control" required="" type="text" value="<?php echo set_value('lat'); ?>"  id="lat" readonly="" placeholder="Latitude" />
                                              <label class="error" style="display:none;" id="error-lat">Please enter the correct format for latitude</label>
-                                            <input name="lng" required="" type="text" value="<?php echo set_value('lng'); ?>"  id="lng" readonly="" />
-                                             <label class="error" style="display:none;" id="error-lng"> Please enter the correct format for longitude</label>
+                                             </div>
+                                             <div class="col-sm-6">
+                                            <input name="lng" class="form-control" required="" type="text" value="<?php echo set_value('lng'); ?>"  id="lng" readonly="" placeholder="Longitude"/>
+                                             <label class="error" style="display:none;" id="error-lng"> Please enter the correct format for longitude</label> 
+                                            </div>
+                                        </aside>
                                         </div>
                                     </article>
 
                               
                                     
-                                     <article class="form-group m-lr-0">
+                                     <article class="clearfix m-t-10">
                                         <label for="cname" class="control-label col-md-4  col-sm-4">Phone:</label>
                                         <div class="col-md-8 col-sm-8">
                                             <a href="javascript:void(0)" class="add pull-right" rel=".clone"><i class="fa fa-plus-circle fa-2x m-t-5 label-plus"></i></a>
@@ -145,7 +153,7 @@
                                             <p class="m-t-10">* If it is landline, include Std code with number </p>
                                         </div>
                                     </article>
-                                    <article class="form-group m-lr-0 ">
+                                    <article class="clearfix m-t-10">
                                         <label for="cemail" class="control-label col-md-4 col-sm-4">Contact Person :</label>
                                         <div class="col-md-8 col-sm-8">
                                             <input class="form-control" name="bloodBank_cntPrsn" type="text" required="" id="bloodBank_cntPrsn" value="<?php echo set_value('bloodBank_cntPrsn'); ?>">
@@ -154,7 +162,7 @@
                                         </div>
                                     </article>
 
-                                    <article class="form-group m-lr-0">
+                                    <article class="clearfix m-t-10">
                                         <label for="cname" class="control-label col-md-4 col-sm-4">Membership Type :</label>
                                         <div class="col-md-8 col-sm-8">
                                             <select class="selectpicker" data-width="100%" name="bloodBank_mbrTyp" id="bloodBank_mbrTyp">
@@ -165,7 +173,7 @@
                                             <label class="error" > <?php echo form_error("bloodBank_mbrTyp"); ?></label>
                                         </div>
                                     </article>
-                                    <article class="form-group m-lr-0">
+                                    <article class="clearfix m-t-10">
                                         <label for="cname" class="control-label col-md-4">24/7 Services ? </label>
                                         <div class="col-md-8">
                                             <aside class="radio radio-info radio-inline">
@@ -218,7 +226,7 @@
                                     <h3>Account Detail</h3>
                                 </figure>
                                 <aside class="clearfix m-t-20 p-b-20">
-                                    <article class="form-group m-lr-0">
+                                    <article class="clearfix m-t-10">
                                         <label for="cname" class="control-label col-md-4 col-sm-4">Registered Email Id:</label>
                                         <div class="col-md-8 col-sm-8">
                                             <input type="email" class="form-control" id="users_email" name="users_email" placeholder="abc@gmail.com" onblur="return checkExisting(this.value),checkEmailFormat()"   value="<?php echo set_value('users_email'); ?>"/>
@@ -229,7 +237,7 @@
                                         </div>
                                     </article>
 
-                                    <article class="form-group m-lr-0">
+                                    <article class="clearfix m-t-10">
                                         <label for="cname" class="control-label col-md-4 col-sm-4">Registered Mobile no. :</label>
                                         <div class="col-md- col-sm-8">
                                             <input type="text" class="form-control" id="bloodBank_mblNo" name="bloodBank_mblNo" placeholder="8880007755" maxlength="10" value="<?php echo set_value('bloodBank_mblNo'); ?>"/>
@@ -238,7 +246,7 @@
                                         </div>
                                     </article>
 
-                                    <article class="form-group m-lr-0">
+                                    <article class="clearfix m-t-10">
                                         <label for="cname" class="control-label col-md-4 col-sm-4">Enter Password :</label>
                                         <div class="col-md-8 col-sm-8">
                                             <input type="password" class="form-control" id="users_password" name="users_password" placeholder=" " />
@@ -247,7 +255,7 @@
                                         </div>
                                     </article>
 
-                                    <article class="form-group m-lr-0">
+                                    <article class="clearfix m-t-10">
                                         <label for="cname" class="control-label col-md-4 col-sm-4">Confirm Password :</label>
                                         <div class="col-md-8 col-sm-8">
                                             <input type="password" class="form-control" id="cnfPassword" name="cnfPassword" placeholder=" " />
