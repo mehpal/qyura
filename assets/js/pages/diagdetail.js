@@ -328,9 +328,9 @@ $("#editac").click(function () {
 
 /* -- Upload Button -- */
 
-document.getElementById("uploadBtnDd").onchange = function () {
-    document.getElementById("uploadFileDd").value = this.value;
-};
+//document.getElementById("uploadBtnDd").onchange = function () {
+//    document.getElementById("uploadFileDd").value = this.value;
+//};
 
 /*center modal*/
 
@@ -378,6 +378,6 @@ $('.thumbnail').click(function () {
     });
 });
 
-$(".select2").select2({
-    width: '100%'
-});
+//$(".select2").select2({
+//    width: '100%'
+//});
