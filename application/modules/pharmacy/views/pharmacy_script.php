@@ -53,7 +53,8 @@ if ($current != 'detailPharmacy'):
 <script type="text/javascript" src="http://localhost/qyura/assets/vendor/x-editable/jquery.xeditable.js"></script>
 <!--<script type= 'text/javascript' src="<?php echo base_url(); ?>assets/js/jquery.dataTables.js"></script>-->
 
-</script>
+    <script src="<?php echo base_url(); ?>assets/js/common_js.js"></script>
+    
 <script> var pharmacyId = <?php echo $check; ?></script>
 
 
@@ -681,6 +682,27 @@ if (isset($mapData) && !empty($mapData)) {
             });
         }
     }
+    
+             function checkValidFileUploads(urls){
+       
+           var avatar_file = $(".avatar-data").val();
+            $.ajax({
+              url : urls + 'index.php/pharmacy/checkFileUploadValidation',
+              type: 'POST',
+              data:{'avatar_file' : avatar_file},
+             success:function(data){
+                var obj = $.parseJSON(data);
+                
+                if(obj.state == 400){
+                    $("#message_upload").html("<div class='alert alert-danger'>"+obj.message+"</div>");
+                    $(".close").hide();
+                }else{
+                    $("#avatar-modal").modal('hide');
+                     $("#message_upload").html("");
+                }
+             }
+          });
+   }
 
 </script>   
 
