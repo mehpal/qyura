@@ -1,6 +1,7 @@
 @media screen and (max-width:767px) {
     .side-menu.left {
         z-index: 9999;
+        //q
     }
     .m-tb-xs-3 {
         margin: 3px 0px;
