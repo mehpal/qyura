@@ -35,11 +35,11 @@ class Diagnostic_model extends CI_Model {
     function fetchEmail($email, $usersId = NULL) {
         $this->db->select('users_email');
         $this->db->from('qyura_users');
-        $this->db->join('qyura_usersRoles', 'qyura_usersRoles.usersRoles_userId = qyura_users.users_id', 'left');
+        $this->db->join('qyura_usersRoles', 'qyura_usersRoles.usersRoles_userId = qyura_users.users_id', 'inner');
         if ($usersId) {
             $this->db->where('qyura_users.users_id !=', $usersId);
         }
-        $this->db->where('qyura_usersRoles.usersRoles_roleId', 3);
+       // $this->db->where('qyura_usersRoles.usersRoles_roleId', 3);
         $this->db->where('qyura_users.users_email', $email);
         $result = $this->db->get();
         //return $this->db->last_query();

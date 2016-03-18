@@ -73,7 +73,9 @@
 
     initModal: function () {
       this.$avatarModal.modal({
-        show: false
+        show: false,
+           backdrop: 'static',
+       keyboard: true
       });
     },
 

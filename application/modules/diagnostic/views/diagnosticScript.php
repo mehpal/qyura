@@ -41,7 +41,7 @@ if($current != 'detailDiagnostic'):?>
 
     <script src="<?php echo base_url();?>assets/vendor/select2/select2.min.js" type="text/javascript"></script> 
 <!--     <script src="<?php echo base_url();?>assets/js/fileUpload/fileinput.js" type="text/javascript"></script> -->
-    
+    <script src="<?php echo base_url(); ?>assets/js/common_js.js"></script>
  <?php if(isset($mapData) && !empty($mapData)){
         $lat = $mapData[0]->diagnostic_lat;
         $lang = $mapData[0]->diagnostic_long;
@@ -336,30 +336,7 @@ if($current != 'detailDiagnostic'):?>
             }
         }   
            
-    function check_email(myEmail){
-           $.ajax({
-               url : urls + 'index.php/diagnostic/check_email',
-               type: 'POST',
-              data: {'users_email' : myEmail},
-              success:function(datas){
-                  if(datas == 0){
-                   $("form[name='diagnosticForm']").submit();
-                   return true;
-              }
-              else if(datas == 1) {
-                    $('#users_email').addClass('bdr-error');
-                $('#error-users_email_check').delay(3000).fadeOut('slow');;
-               // $('#users_email').focus();
-               return false;
-              }
-              else{
-                    $('#users_email_status').val(datas);
-                    $("form[name='diagnosticForm']").submit();
-                     return true;
-              }
-              } 
-           });
-        }
+ 
         
     /**
      * @project Qyura
@@ -999,125 +976,7 @@ if($current != 'detailDiagnostic'):?>
             m+=h*60;
             
           });
-          
-//       $('#afternoonStartTime').timepicker({
-//        showMeridian: true,        
-//        minuteStep: 1,
-//        showInputs: true,        
-//        }).on('hide.timepicker', function(e) {   
-//             var h= e.time.hours;
-//            var m= e.time.minutes;
-//            var mer= e.time.meridian;
-//            m+=h*60;
-//            
-//            if(m < 719 && mer == 'AM'){
-//                $('#afternoonStartTime').timepicker('setTime', '12:00 PM');
-//            }   
-//            //convert hours into minutes
-//            
-//          // console.log(m);
-//            //10:15 = 10h*60m + 15m = 615 min
-//            if( m > 358 )
-//                $('#afternoonStartTime').timepicker('setTime', '12:00 PM');
-//          });
-          
-//            $('#afternoonEndTime').timepicker({
-//            showMeridian: true,        
-//            minuteStep: 1,
-//            showInputs: true,        
-//            }).on('hide.timepicker', function(e) {   
-//                 var h= e.time.hours;
-//                var m= e.time.minutes;
-//                var mer= e.time.meridian;
-//                m+=h*60;
-//               
-//                if(m < 719 && mer == 'AM'){
-//                    $('#afternoonEndTime').timepicker('setTime', '05:59 PM');
-//                }   
-//            //convert hours into minutes
-//         
-//                if( m > 359 )
-//                    $('#afternoonEndTime').timepicker('setTime', '05:59 PM');
-//          });
-          
-//         $('#eveningStartTime').timepicker({
-//            showMeridian: true,        
-//            minuteStep: 1,
-//            showInputs: true,        
-//            }).on('hide.timepicker', function(e) {   
-//                 var h= e.time.hours;
-//                var m= e.time.minutes;
-//                var mer= e.time.meridian;
-//                m+=h*60;
-//               
-//                if(m < 719 && mer == 'AM'){
-//                    $('#eveningStartTime').timepicker('setTime', '06:00 PM');
-//                }   
-//            //convert hours into minutes
-//         
-//                if( m > 359 )
-//                    $('#eveningStartTime').timepicker('setTime', '06:00 PM');
-//          });
-          
-//           $('#eveningEndTime').timepicker({
-//            showMeridian: true,        
-//            minuteStep: 1,
-//            showInputs: true,        
-//            }).on('hide.timepicker', function(e) {   
-//                 var h= e.time.hours;
-//                var m= e.time.minutes;
-//                var mer= e.time.meridian;
-//                m+=h*60;
-//               
-//                if(m < 719 && mer == 'AM'){
-//                    $('#eveningEndTime').timepicker('setTime', '10:59 PM');
-//                }   
-//            //convert hours into minutes
-//         
-//                if( m > 359 )
-//                    $('#eveningEndTime').timepicker('setTime', '10:59 PM');
-//          });
-          
-//           $('#nightStartTime').timepicker({
-//            showMeridian: true,        
-//            minuteStep: 1,
-//            showInputs: true,        
-//            }).on('hide.timepicker', function(e) {   
-//                 var h= e.time.hours;
-//                var m= e.time.minutes;
-//                var mer= e.time.meridian;
-//                m+=h*60;
-//               
-//                if(m < 719 && mer == 'AM'){
-//                    $('#nightStartTime').timepicker('setTime', '11:00 PM');
-//                }   
-//            //convert hours into minutes
-//         
-//                if( m > 359 )
-//                    $('#nightStartTime').timepicker('setTime', '11:00 PM');
-//          });
-          
-          
-//           $('#nightEndTime').timepicker({
-//            showMeridian: true,        
-//            minuteStep: 1,
-//            showInputs: true,        
-//            }).on('hide.timepicker', function(e) {   
-//                 var h= e.time.hours;
-//                var m= e.time.minutes;
-//                var mer= e.time.meridian;
-//                m+=h*60;
-//               
-//                if(m < 719 && mer == 'AM'){
-//                    $('#nightEndTime').timepicker('setTime', '04:59 AM');
-//                }   
-//            //convert hours into minutes
-//         
-//                if( m > 359 )
-//                    $('#nightEndTime').timepicker('setTime', '04:59 AM');
-//          });
-          
-          
+      
     });
     
       function isAlphabets(letters){
@@ -1130,6 +989,34 @@ if($current != 'detailDiagnostic'):?>
         }
      }
     
+   
+      function check_email(myEmail){
+           $.ajax({
+               url : urls + 'index.php/diagnostic/check_email',
+               type: 'POST',
+              data: {'users_email' : myEmail},
+              success:function(datas){
+                  if(datas == 0){
+                   //$("form[name='diagnosticForm']").submit();
+                   $('#error-users_email_check').delay(1000).hide('fast');;
+                   return true;
+              }
+              else if(datas == 1) {
+                    $('#users_email').addClass('bdr-error');
+                    $('#error-users_email_check').delay(1000).fadeIn('fast');
+               // $('#users_email').focus();
+                   return false;
+              }
+              else{
+                    $('#users_email_status').val(datas);
+                    $('#error-users_email_check').delay(1000).hide('fast');;
+                   // $("form[name='diagnosticForm']").submit();
+                     return true;
+              }
+              } 
+           });
+        }
+   
    
    function validationDiagnostic(){
        // $("form[name='diagnosticForm']").submit();
@@ -1281,6 +1168,11 @@ if($current != 'detailDiagnostic'):?>
             }
             
                //debugger;
+               
+            if(!check_email){
+               status = 0; 
+            }
+               
         if(emails !='' && status == 1){
               check_email(emails);
               return false;
@@ -1621,6 +1513,70 @@ function imageIsLoaded(e) {
      } 
 
 
+    var _validFileExtensions = ["jpeg", "jpg", "bmp", "gif", "png"];
+    function ValidateSingleInput(oInput,count) {
+        var count_image = 10;
+        var mess = '';
+        
+        if(count == undefined){ count = 0; }else{ mess = "and you already entered "+count+" image";}
+        count_image = count_image - count;
+        
+        if (oInput.type == "file") {
+            var sFileName = oInput.value;
+
+            var countFile = oInput.files.length;
+           
+            
+            if(countFile < count_image){
+                var fileName = oInput.files;
+                var k;
+                var fileType;
+                var size = 0;
+//                var file, img;
+//                if ((file = oInput.files[0])) {
+//                     img = new Image();
+//                      console.log(oInput.width);
+//                     img.onload = function() {
+//                        
+//                         alert(oInput.size + " " + oInput.size);  
+//                    }; 
+//                }
+                
+                for (k = 0; k < countFile; k++) {
+                    size = size + fileName[k].size;
+                   // console.log(fileName[k]);
+                }
+                if (size > 6291456) {
+                    alert("Sorry, total allowed file size : -  6MB ");
+                    oInput.value = "";
+                    return false;
+                } else {
+                if (sFileName.length > 0) {
+                    var blnValid = false;
+                    var m;
+                    for (m = 0; m < countFile; m++) {
+                        fileType = fileName[m].type;
+                        fileType = fileType.split('/');
+                        if ($.inArray(fileType[1], _validFileExtensions) !== -1) {
+                            blnValid = true;
+                            continue;
+                        } else {
+                            alert("Sorry,   '" + fileName[m].name + "'   is invalid, allowed extensions are : -   " + _validFileExtensions.join(", "));
+                            oInput.value = "";
+                            blnValid = false;
+                        }
+                    }
+                    return blnValid;
+                }
+            }
+            }else{
+                alert("Sorry, total allowed image count is : 9 "+mess+"");
+                oInput.value = "";
+                return false;
+            }
+        }
+        return true;
+    }
 </script>
 
 </body>

@@ -167,6 +167,7 @@ class Diagnostic extends MY_Controller {
                 $path = realpath(FCPATH . 'assets/diagnosticsImage/');
                 $upload_data = $this->input->post('avatar_data');
                 $upload_data = json_decode($upload_data);
+                
                 $original_imagesname = $this->uploadImageWithThumb($upload_data, 'avatar_file', $path, 'assets/diagnosticsImage/', './assets/diagnosticsImage/thumb/', 'diagnostics');
 
                 if (empty($original_imagesname)) {
