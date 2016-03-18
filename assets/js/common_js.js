@@ -30,4 +30,7 @@
         };
         img.src = _URL.createObjectURL(file);
     }
+    
    });
+   
+ 
