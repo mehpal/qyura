@@ -26,6 +26,7 @@ if($current == 'detailBloodBank'):?>
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
 <script src="<?php echo base_url(); ?>assets/js/jquery.geocomplete.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/select2/select2.min.js" type="text/javascript"></script> 
+    <script src="<?php echo base_url(); ?>assets/js/common_js.js"></script>
 <?php if(isset($mapData) && !empty($mapData)){
         $lat = $mapData[0]->bloodBank_lat;
         $lang = $mapData[0]->bloodBank_long;
@@ -777,5 +778,27 @@ function imageIsLoaded(e) {
     $('#previewing').attr('height', '230px');
 }
 });
+
+
+         function checkValidFileUploads(urls){
+       
+           var avatar_file = $(".avatar-data").val();
+            $.ajax({
+              url : urls + 'index.php/bloodbank/checkFileUploadValidation',
+              type: 'POST',
+              data:{'avatar_file' : avatar_file},
+             success:function(data){
+                var obj = $.parseJSON(data);
+                
+                if(obj.state == 400){
+                    $("#message_upload").html("<div class='alert alert-danger'>"+obj.message+"</div>");
+                    $(".close").hide();
+                }else{
+                    $("#avatar-modal").modal('hide');
+                     $("#message_upload").html("");
+                }
+             }
+          });
+   }
 
     </script>
