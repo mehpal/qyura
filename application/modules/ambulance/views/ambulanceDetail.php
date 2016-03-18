@@ -29,7 +29,7 @@
                                     <div class="bg-picture text-center" style="background-image:url('<?php if(isset($backgroundImage) && !empty($backgroundImage[0]->ambulance_background_img)): echo base_url().'assets/ambulanceImages/'.$backgroundImage[0]->ambulance_background_img; else: echo base_url().'assets/default-images/ambulance.png'; endif;?>')">
                                         <div class="bg-picture-overlay"></div>
                                         <div class="profile-info-name">
-                                       <div class='pro-img avatar-view'>
+                                       <div class='pro-img '>
                                                 <!-- image -->
                                                 <?php if(!empty($ambulanceData[0]->ambulance_img)){
                                                     ?>
@@ -37,7 +37,7 @@
                                                <?php } else { ?>
                                                  <img src="<?php echo base_url()?>assets/default-images/ambulance_logo.png" alt="" class="logo-img" />
                                                <?php } ?>
-                                                <article class="logo-up" style="display:none">
+                                                <article class="logo-up avatar-view" style="display:none">
                                                        <?php if(!empty($ambulanceData[0]->ambulance_img)){
                                                     ?>
                                                 <img src="<?php echo base_url()?>assets/ambulanceImages/thumb/original/<?php echo $ambulanceData[0]->ambulance_img; ?>" alt="" class="logo-img" />
