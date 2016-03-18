@@ -17,7 +17,7 @@
                      <form class="cmxform form-horizontal tasi-form avatar-form" id="submitForm" name="submitForm" method="post" action="<?php echo site_url(); ?>/ambulance/SaveAmbulance" novalidate="novalidate" enctype="multipart/form-data" >
                         <input type="hidden" id="StateId" name="StateId" value="" />
                        
-                        <!-- Left Section Start -->
+                        <!-- Left Section Start se -->
                         <section class="col-md-12 detailbox">
                             <div class="bg-white mi-form-section">
                                 <article class="clearfix">
