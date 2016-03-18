@@ -529,8 +529,9 @@
                                 
 <!--Gllery Starts -->
 <section class="tab-pane fade in <?php if(isset($active) && $active == 'gallery'){echo "active";}?>" id="gallery">
-    <div class="fileUpload btn btn-sm btn-upload im-upload">
-        <span class="btn btn-appointment avatar-view-gallery" >Add More</span>
+    <div class="fileUpload btn btn-sm btn-upload im-upload avatar-view-gallery">
+        <img src="<?php echo base_url();?>assets/default-images/Dignostics-logo.png" style="display:none;" />
+        <span class="btn btn-appointment " >Add More</span>
 <!--                                             <input type="file" class="upload" id="uploadBtn"> -->
     </div>
      <input type="hidden" style="display:none;" class="no-display" id="file_action_url_gallery" name="file_action_url_gallery" value="<?php echo site_url('diagnostic/galleryUploadImage');?>" />

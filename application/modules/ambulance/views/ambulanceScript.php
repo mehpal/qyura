@@ -25,6 +25,7 @@ if($current == 'detailAmbulance'):?>
     src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>-->
 <script src="<?php echo base_url(); ?>assets/js/jquery.geocomplete.min.js"></script>
 <!--<script src="https://maps.googleapis.com/maps/api/js"></script>-->
+    <script src="<?php echo base_url(); ?>assets/js/common_js.js"></script>
 <?php $check= 0; 
 if(isset($ambulanceId) && !empty($ambulanceId)){
     $check = $ambulanceId; 
@@ -522,6 +523,28 @@ function imageIsLoaded(e) {
     $('#previewing').attr('height', '230px');
 }
 });
+
+ 
+         function checkValidFileUploads(urls){
+       
+           var avatar_file = $(".avatar-data").val();
+            $.ajax({
+              url : urls + 'index.php/ambulance/checkFileUploadValidation',
+              type: 'POST',
+              data:{'avatar_file' : avatar_file},
+             success:function(data){
+                var obj = $.parseJSON(data);
+                
+                if(obj.state == 400){
+                    $("#message_upload").html("<div class='alert alert-danger'>"+obj.message+"</div>");
+                    $(".close").hide();
+                }else{
+                    $("#avatar-modal").modal('hide');
+                     $("#message_upload").html("");
+                }
+             }
+          });
+   }
 
 </script>
 

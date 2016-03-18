@@ -13,7 +13,7 @@
                         <label for="avatarInput">File upload</label>
                         <input type="file" class="avatar-input" id="avatarInput" name="avatar_file">
                     </div>
-
+                     <div id="message_upload"></div>
                     <!-- Crop and preview -->
                     <div class="row">
                         <div class="col-md-9">
@@ -31,7 +31,7 @@
 
                         </div>
                         <div class="col-md-3">
-                            <button type="button" class="btn btn-primary btn-block avatar-save" id="savebtn">Done</button>
+                            <button type="button" class="btn btn-primary btn-block avatar-save" id="savebtnUpload" onClick="checkValidFileUploads('<?php echo base_url();?>');">Done</button>
                         </div>
                     </div>
                 </div>

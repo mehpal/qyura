@@ -23,9 +23,6 @@ class Doctors_model extends My_model {
              $this->db->or_like($array); 
              $this->db->group_end();
          }
-         
-         
-        
 
         // where array
         $where = array('doctors_deleted' => 0, 'usersRoles_roleId' => ROLE_DOCTORE, 'usersRoles_parentId' => 0);
@@ -502,11 +499,10 @@ CASE
     
     public function getDocAllTimeSlot($doctorUserId, $miId = null) {
         
-       $where = array('doctorAvailability_docUsersId' => $doctorUserId);
+        $where = array('doctorAvailability_docUsersId' => $doctorUserId,"doctorAvailabilitySession_deleted"=>0);
         if($miId != null){
             $where['doctorAvailability_refferalId'] = $miId;
         }
-        
 
         $this->db->select('doctorAvailability_refferalId as MiId,  (CASE WHEN(hospital_usersId is not null) THEN "Hospital" WHEN(diagnostic_usersId is not null) THEN "Diagno" WHEN(doctors_userId is not null) THEN "Doctor" END) as type, (CASE WHEN(hospital_name is not null) THEN hospital_name WHEN(diagnostic_name is not null) THEN diagnostic_name WHEN(doctor_addr is not null) THEN doctor_addr END) as name, (CASE WHEN(hospital_id is not null) THEN hospital_id WHEN(doctors_id is not null) THEN doctors_id WHEN(diagnostic_id is not null) THEN diagnostic_id END) as id, (CASE WHEN(hospital_usersId is not null) THEN hospital_usersId WHEN(doctors_userId is not null) THEN doctors_userId WHEN(diagnostic_usersId is not null) THEN diagnostic_usersId END) as userId, group_concat(doctorAvailability_id) as availabilityId')
                 ->from('qyura_doctorAvailability')
@@ -535,7 +531,7 @@ CASE
                  $finalTemp['timeslot'] = $this->getDiagnoTimeSlotForDoc($row->MiId);
                  $finalTemp['docTimeSlot'] = isset($row->MiId) ? $this->getDocTimeSlotForDiagon($row->MiId, $doctorUserId,$row->availabilityId) : "";         
                }elseif( $row->type == 'Doctor'){
-                  $finalTemp['timeslot'] = $this->getDocTimeSlot($row->MiId, $doctorUserId);
+                  $finalTemp['timeslot'] = defalutTimeSlots();
                   $finalTemp['docTimeSlot'] = isset($row->MiId) ? $this->getDocTimeSlotForDoc($row->MiId, $doctorUserId,$row->availabilityId) : "";
                 }
                       

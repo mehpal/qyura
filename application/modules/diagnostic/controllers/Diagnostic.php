@@ -122,6 +122,8 @@ class Diagnostic extends MY_Controller {
         echo $cityOption;
         exit;
     }
+    
+
 
     /**
      * @project Qyura
@@ -167,6 +169,7 @@ class Diagnostic extends MY_Controller {
                 $path = realpath(FCPATH . 'assets/diagnosticsImage/');
                 $upload_data = $this->input->post('avatar_data');
                 $upload_data = json_decode($upload_data);
+                
                 $original_imagesname = $this->uploadImageWithThumb($upload_data, 'avatar_file', $path, 'assets/diagnosticsImage/', './assets/diagnosticsImage/thumb/', 'diagnostics');
 
                 if (empty($original_imagesname)) {
@@ -436,7 +439,9 @@ class Diagnostic extends MY_Controller {
             $path = realpath(FCPATH . 'assets/diagnosticsImage/');
             $upload_data = $this->input->post('avatar_data');
             $upload_data = json_decode($upload_data);
-
+            
+            if($upload_data->width > 110){
+            
             $original_imagesname = $this->uploadImageWithThumb($upload_data, 'avatar_file', $path, 'assets/diagnosticsImage/', './assets/diagnosticsImage/thumb/', 'diagnostic');
 
             if (empty($original_imagesname)) {
@@ -456,6 +461,10 @@ class Diagnostic extends MY_Controller {
                 } else {
                     $response = array('state' => 400, 'message' => 'Failed to update avtar');
                 }
+            }
+            
+            }else{
+               $response = array('state' => 400, 'message' => 'Height and Width must exceed 150px.');  
             }
             echo json_encode($response);
         } else {
@@ -1436,5 +1445,7 @@ class Diagnostic extends MY_Controller {
         $data['title'] = 'Diagnostic Map';
         $this->load->super_admin_template('map', $data, 'diagnosticScript');
     }
+    
+  
 
 }

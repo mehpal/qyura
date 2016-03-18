@@ -145,7 +145,7 @@
                                                         </aside>
                                                          <form name="submitForm" action="<?php echo site_url('bloodbank/saveDetailBloodBank/'.$bloodBankId); ?>" id="submitForm" method="post">
                                                         <aside id="newDetail" style="display:<?php echo $showStatus;?>;">
-                                                            <article class="clearfix m-b-10">
+                                                            <article class="clearfix m-t-10">
                                                                 <label for="cemail" class="control-label col-md-4 col-sm-4">Blood Bank Name :</label>
                                                                 <div class="col-md-8 col-sm-8">
                                                                     <input class="form-control" id="bloodBank_name" name="bloodBank_name" type="text" value="<?php echo $bloodBankData[0]->bloodBank_name;?>">
@@ -155,8 +155,8 @@
                                                                 </div>
                                                             </article>
                                                             
-                                                            <article class="form-group m-lr-0">
-                                                                    <label class="control-label col-md-4" for="cname">manual</label>
+                                                            <article class="clearfix">
+                                                                    <label class="control-label col-md-4" for="cname">Manual:</label>
                                                                     <div class="col-md-8">
                                                                         <aside class="radio radio-info radio-inline">
                                                                             <input type="radio"  name="isManual" value="1" id="isManual" onclick="IsAdrManual(this.value)">
@@ -170,22 +170,31 @@
                                                                 </article>
                                                             
                                                             
-                                                            <article class="clearfix m-b-10">
+                                                            <article class="clearfix m-t-10">
                                                                 <label for="cemail" class="control-label col-md-4 col-sm-4">Address :</label>
                                                                 <div class="col-md-8 col-sm-8">
                                                                     <textarea  class="form-control" id="geocomplete" name="bloodBank_add" type="text" ><?php if(isset($bloodBankData[0]->bloodBank_add)){ echo $bloodBankData[0]->bloodBank_add; }?></textarea>
                                                                      <label class="error" style="display:none;" id="error-bloodBank_add"> please enter an address</label>
                                          
                                                                     <label class="error" > <?php echo form_error("bloodBank_add"); ?></label>
-                                                                    
-                                                                     <input name="lat" required="" type="text"  id="lat" readonly="" value="<?php echo $bloodBankData[0]->bloodBank_lat;?>" />
+                                                                </div>
+                                                            </article>
+                                                            <article class="clearfix">
+                                                                <div class="col-md-8 col-sm-8 col-sm-offset-4">
+                                                                   <aside class="row">
+                                                                    <div class="col-sm-6">
+                                                                     <input class="form-control" name="lat" required="" type="text"  id="lat" readonly="" value="<?php echo $bloodBankData[0]->bloodBank_lat;?>" />
                                                                     <label class="error" style="display:none;" id="error-lat">Please enter the correct format for latitude</label>
-                                                                   <input name="lng" required="" type="text"   id="lng" readonly="" value="<?php echo $bloodBankData[0]->bloodBank_long;?>" />
+					     </div>
+					     <div class="col-sm-6">
+						                        <input class="form-control" name="lng" required="" type="text"   id="lng" readonly="" value="<?php echo $bloodBankData[0]->bloodBank_long;?>" />
                                                                     <label class="error" style="display:none;" id="error-lng"> Please enter the correct format for longitude</label>
+								</div>
+								</aside>
                                                                 </div>
                                                             </article>
 
-                                                            <article class="clearfix m-b-10 ">
+                                                            <article class="clearfix m-t-10 ">
                                                                 <label for="cemail" class="control-label col-md-4 col-sm-4">Phone Numbers :</label>
                                                                 <div class="col-md-8 col-sm-8">
                                                                     <?php 
@@ -201,7 +210,7 @@
                                                                                 <option value="1" <?php if($moreExpolde[0] == '1'){ echo 'selected';}?>>+1</option>
                                                                             </select>
                                                                         </div>
-                                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10 m-t-xs-10">
+                                                                        <div class="col-lg-9 col-md-8 col-sm-9 col-xs-10 m-t-xs-10">
                                                                             <input type="text" class="form-control" name="bloodBank_phn[]" id="bloodBank_phn<?php echo $i;?>" placeholder="9837000123" value="<?php echo $moreExpolde[1];?>" maxlength="10" onblur="checkNumber(<?php echo $i;?>)"/>
                                                                         </div>
                                                                        
@@ -209,11 +218,11 @@
                                                                     <br />
                                                                     <?php $moreExpolde ='';}?>
                                                                 <label class="error" style="display:none;" id="error-bloodBank_phn"> please enter a valid phone number</label>
-                                                                    <p class="m-t-10">* If it is landline, include Std code with number </p>
+                                                                    <p class="m-t-0">* If it is landline, include Std code with number </p>
                                                                 </div>
                                                             </article>
 
-                                                            <article class="clearfix m-b-10">
+                                                            <article class="clearfix m-t-10">
                                                                 <label for="cemail" class="control-label col-md-4 col-sm-4">Email Id :</label>
                                                                 <div class="col-md-8 col-sm-8">
                                                                  <input class="form-control" id="users_email" name="users_email" type="email" value="<?php echo $bloodBankData[0]->users_email;?>" onblur="checkEmailFormatDetail()" />
@@ -223,7 +232,7 @@
                                                                 </div>
                                                             </article>
 
-                                                            <article class="clearfix m-b-10">
+                                                            <article class="clearfix">
                                                                 <label for="cemail" class="control-label col-md-4 col-sm-4">Contact Person:</label>
                                                                 <div class="col-md-8 col-sm-8">
                                                                  
@@ -234,7 +243,7 @@
                                                             </article>
 
 
-                                                             <article class="clearfix m-b-10">
+                                                             <article class="clearfix m-t-10">
 
                                                               <div class="col-md-12">
                                                               <button type="submit" class="btn btn-appointment waves-effect waves-light m-l-10 pull-right" onclick="return validationBloodbank();">Submit</button>

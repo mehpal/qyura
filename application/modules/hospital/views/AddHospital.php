@@ -46,7 +46,7 @@
                                     <article class="clearfix m-t-10">
                                         <label for="cname" class="control-label col-md-4  col-sm-4">Hospital Type :</label>
                                         <div class="col-md-8 col-sm-8">
-                                            <select class="selectpicker" data-width="100%" name="hospital_type" id="hospital_type">
+                                            <select class="form-control selectpicker" data-width="100%" name="hospital_type" id="hospital_type">
                                                <?php if(!empty($hospitalType)){ foreach($hospitalType as $key=>$val) {
                                                    echo  '<option value="'.$val->hospitalType_id.'">'.$val->hospitalType_name.'</option>';
                                                } } ?>
@@ -73,7 +73,7 @@
                                         <label for="cname" class="control-label col-md-4 col-sm-4">Address:</label>
                                         <div class="col-md-8 col-sm-8">
                                          
-                                                    <select class="selectpicker" data-width="100%" name="hospital_countryId" id="hospital_countryId" onchange ="fetchState(this.value)">
+                                                    <select class="form-control selectpicker" data-width="100%" name="hospital_countryId" id="hospital_countryId" onchange ="fetchState(this.value)">
                                                         <option value="">Select Country</option>
                                                         <option value="1">INDIA</option>
                                                          
@@ -85,7 +85,7 @@
                                     </article>
                                     <article class="clearfix">
                                         <div class="col-md-8  col-sm-8 col-sm-offset-4">
-<select class="selectpicker" data-width="100%" name="hospital_stateId" id="hospital_stateId" data-size="4" onchange ="fetchCity(this.value)">
+<select class="selectpicker form-control" data-width="100%" name="hospital_stateId" id="hospital_stateId" data-size="4" onchange ="fetchCity(this.value)">
 
                                                         <option value="">Select State</option>
                                                        <?php foreach($allStates as $key=>$val) {?>
@@ -100,7 +100,7 @@
                                     <article class="clearfix">
                                         <div class="col-md-8  col-sm-8 col-sm-offset-4">
                                             
-                                                    <select class="selectpicker" data-width="100%" name="hospital_cityId" id="hospital_cityId" data-size="4">
+                                                    <select class="form-control selectpicker" data-width="100%" name="hospital_cityId" id="hospital_cityId" data-size="4">
                                                         <!--<option>Select City</option>
                                                         <option>Kolkata</option>
                                                         <option>Delhi</option>-->
@@ -119,8 +119,8 @@
                                      </article>
                                     
                                     
-                                     <article class="form-group m-lr-0">
-                                        <label class="control-label col-md-4" for="cname">manual</label>
+                                     <article class="clearfix">
+                                        <label class="control-label col-md-4" for="cname">Manual:</label>
                                         <div class="col-md-8">
                                             <aside class="radio radio-info radio-inline">
                                                 <input type="radio"  name="isManual" value="1" id="isManual" onclick="IsAdrManual(this.value)">
@@ -134,18 +134,26 @@
                                     </article>
 	                           
 
-                                    <article class="clearfix">
+                                    <article class="clearfix m-t-10">
                                         <div class="col-md-8  col-sm-8 col-sm-offset-4">
                                             <input type="text" class="form-control" id="geocomplete" name="hospital_address" placeholder="209, ABC Road, near XYZ Building " value="<?php echo set_value('hospital_address'); ?>" />
                                             <label class="error" style="display:none;" id="error-hospital_address"> please enter an address</label>
-                                            
-                                            <input name="lat" required="" type="text" value="<?php echo set_value('lat'); ?>"  id="lat" readonly=""  />
-                                             <label class="error" style="display:none;" id="error-lat">Please enter the correct format for latitude</label>
-                                            <input name="lng" required="" type="text" value="<?php echo set_value('lng'); ?>"  id="lng" readonly="" />
-                                             <label class="error" style="display:none;" id="error-lng"> Please enter the correct format for longitude</label>
-                                             
-                                             
+                                           
                                             <label class="error" > <?php echo form_error("hospital_address"); ?></label>
+                                        </div>
+                                    </article>
+                                    <article class="clearfix">
+                                        <div class="col-md-8  col-sm-8 col-sm-offset-4">
+                                            <aside class="row">
+                                            <div class="col-sm-6">
+                                            <input name="lat" class="form-control" required="" type="text" value="<?php echo set_value('lat'); ?>"  id="lat" readonly="" placeholder="Latitude" />
+                                             <label class="error" style="display:none;" id="error-lat">Please enter the correct format for latitude</label>
+                                             </div>
+                                             <div class="col-sm-6">
+                                            <input name="lng" required="" type="text" value="<?php echo set_value('lng'); ?>"  id="lng" readonly="" class="form-control" placeholder="Longitude" />
+                                             <label class="error" style="display:none;" id="error-lng"> Please enter the correct format for longitude</label>
+                                             </div>
+                                          </aside>
                                         </div>
                                     </article>
 

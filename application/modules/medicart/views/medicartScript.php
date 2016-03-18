@@ -33,7 +33,7 @@ if($current != 'detailDiagnostic'):?>
 <script src="<?php echo base_url();?>assets/vendor/select2/select2.min.js" type="text/javascript"></script> 
 <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js" type="text/javascript"></script> 
 
-    
+   <script src="<?php echo base_url(); ?>assets/js/common_js.js"></script> 
 <script> 
      var urls = "<?php echo base_url()?>";
 //     var diagnosticId = "<?php //echo $check?>";
@@ -397,6 +397,27 @@ if($current != 'detailDiagnostic'):?>
 		});
 
     });
+    
+            function checkValidFileUploads(urls){
+       
+           var avatar_file = $(".avatar-data").val();
+            $.ajax({
+              url : urls + 'index.php/medicart/checkFileUploadValidation',
+              type: 'POST',
+              data:{'avatar_file' : avatar_file},
+             success:function(data){
+                var obj = $.parseJSON(data);
+                
+                if(obj.state == 400){
+                    $("#message_upload").html("<div class='alert alert-danger'>"+obj.message+"</div>");
+                    $(".close").hide();
+                }else{
+                    $("#avatar-modal").modal('hide');
+                     $("#message_upload").html("");
+                }
+             }
+          });
+   }
     </script>
 
 </body>
