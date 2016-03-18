@@ -301,12 +301,18 @@
                         <label for="cname" class="control-label col-lg-3 col-sm-4">Awards:</label>
                         <div class="col-lg-9 col-sm-8">
                             <aside class="row">
-                                <div class="col-md-10 col-sm-10 col-xs-10">
+                                <div class="col-md-12 ">
                                     <input type="text" class="form-control" placeholder="FICCI Healthcare Excillence Awards" id="diagnostic_awardsName" name="diagnostic_awardsName"/>
+                                    <input type="text" class="form-control m-t-20" placeholder="2016" id="diagnostic_awardsyear" name="diagnostic_awardsyear"/>
                                 </div>
-                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                
+                                <div class="clearfix">
+                                    
+                                       <div class="col-md-2 col-sm-2 col-xs-2 pull-right text-right">
                                     <a onclick="addAwards()"><i class="fa fa-plus-circle fa-2x m-t-5 label-plus" title="Add More"></i></a>
                                 </div>
+                                </div>
+                             
                             </aside>
                              <div id="totalAwards">                                                
                              </div>

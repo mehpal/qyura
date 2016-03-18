@@ -344,11 +344,12 @@ if($current != 'detailDiagnostic'):?>
     
     function addAwards(){
         var dialAwards_awardsName = $.trim($('#diagnostic_awardsName').val());
+        var dialAwards_awardsYear = $.trim($('#diagnostic_awardsyear').val());
         if(dialAwards_awardsName != ''){
             $.ajax({
                url : urls + 'index.php/diagnostic/addDiagnosticAwards',
                type: 'POST',
-              data: {'diagnosticId' : diagnosticId , 'diaAwards_awardsName' : dialAwards_awardsName },
+              data: {'diagnosticId' : diagnosticId , 'diaAwards_awardsName' : dialAwards_awardsName, 'dialAwards_awardsYear' : dialAwards_awardsYear },
               success:function(datas){
                // console.log(datas);
                   loadAwards();
@@ -359,13 +360,14 @@ if($current != 'detailDiagnostic'):?>
     }
     function editAwards(awardsId){
          var edit_awardsName = $.trim($('#'+awardsId).val());
+         var edit_awardsYear = $.trim($('#year'+awardsId).val());
         
         if(edit_awardsName != ''){
             
             $.ajax({
                url : urls + 'index.php/diagnostic/editDiagnosticAwards',
                type: 'POST',
-              data: {'awardsId' : awardsId , 'diaAwards_awardsName' : edit_awardsName },
+              data: {'awardsId' : awardsId , 'diaAwards_awardsName' : edit_awardsName ,'edit_awardsYear' : edit_awardsYear },
               success:function(datas){
               console.log(datas);
                   loadAwards();
