@@ -151,7 +151,7 @@
                                     <article class="clearfix m-t-10">
                                         <label for="cname" class="control-label col-md-4 col-sm-4">Registered Email Id:</label>
                                         <div class="col-md-8 col-sm-8">
-                                            <input type="email" class="form-control" id="users_email" name="users_email" placeholder="abc@gmail.com" onblur="checkEmailFormat()" />
+                                            <input type="email" class="form-control" id="users_email" name="users_email" placeholder="abc@gmail.com" onblur="return checkExisting(this.value),checkEmailFormat()" />
                                             <label class="error" style="display:none;" id="error-users_email"> please enter Email id Properly</label>
                                             <label class="error" style="display:none;" id="error-users_email_check"> Email Already Exits!</label>
                                             <input type="hidden" class="form-control" id="users_email_status" name="users_email_status" value="" />
@@ -222,6 +222,10 @@
                                 
                                  <section class="clearfix ">
                             <div class="col-md-12 m-t-20 m-b-20">
+                                <input type="hidden" value="1" name="isValid" id="isValid">
+                                <input type="hidden" value="" name="userId" id="userId">
+                                <label class="error" style="display:none;" id="error-userexist">Blood bank already exist!</label>
+                                
                                 <button class="btn btn-danger waves-effect pull-right" type="button">Reset</button>
                                 <div>
                                     <input class="btn btn-success waves-effect waves-light pull-right m-r-20" type="submit" onclick="return validationPharmacy()" value="Submit" />

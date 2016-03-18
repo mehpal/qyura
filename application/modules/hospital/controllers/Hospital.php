@@ -50,6 +50,12 @@ class Hospital extends MY_Controller {
        $this->Hospital_model->checkUserExistence($email);
    }
    
+   // method for delete insurance
+   function deletInsurance(){
+        $insuranceId = $this->input->post('insuranceId');
+       $this->Hospital_model->deletInsurance($insuranceId);
+   }
+   
    // get hospital detail
    function detailHospital($hospitalId=''){
         $data = array();
@@ -328,10 +334,12 @@ class Hospital extends MY_Controller {
            //  $this->bf_form_validation->set_rules('hospital_img', 'File', 'required');
       //  }
         if (empty($_FILES['avatar_file']['name'])) {
+            
             $this->bf_form_validation->set_rules('avatar_file', 'File', 'required');
         }
          if ($this->bf_form_validation->run() === FALSE) {
              $data = array();
+             $data['hospitalType'] = $this->Hospital_model->getHospitalType();
              $data['allStates'] = $this->Hospital_model->fetchStates();
              $data['title'] = 'Add Hospital';
              $this->load->super_admin_template('AddHospital', $data, 'hospitalScript');
@@ -346,6 +354,7 @@ class Hospital extends MY_Controller {
                 $original_imagesname = $this->uploadImageWithThumb($upload_data, 'avatar_file', $path, 'assets/hospitalsImages/', './assets/hospitalsImages/thumb/','hospital');
 
                 if (empty($original_imagesname)) {
+                    $data['hospitalType'] = $this->Hospital_model->getHospitalType();
                     $data['allStates'] = $this->Bloodbank_model->fetchStates();
                     $this->session->set_flashdata('valid_upload', $this->error_message);
                     $data['title'] = 'Add Hospital';
@@ -373,8 +382,8 @@ class Hospital extends MY_Controller {
                     
                 }
                 
-                echo $finalNumber;
-                exit();
+               // echo $finalNumber;
+               // exit();
                 $hospital_name = $this->input->post('hospital_name');
                 $hospital_type = $this->input->post('hospital_type');
                 $hospital_address = $this->input->post('hospital_address');

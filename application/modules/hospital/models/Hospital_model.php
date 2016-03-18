@@ -34,6 +34,19 @@ class Hospital_model extends CI_Model {
          }
     }
     
+    // remove insurance company from hospital
+    function deletInsurance($id = null){
+         $response = '';
+         if($id != null)
+         $response = $this->db->delete('qyura_hospitalInsurance', array('hospitalInsurance_id' => $id)); 
+         
+         if($response){
+            echo json_encode(array('status' => 1, 'message' => 'insurance successfully reomved!'));
+         }else{
+            echo  json_encode(array('status' => 0, 'message' => 'some error occurred while removing insurance company!'));
+         }
+    }
+    
     function fetchCity ($stateId=NULL){
         $this->db->select('city_id,city_name');
         $this->db->from('qyura_city');

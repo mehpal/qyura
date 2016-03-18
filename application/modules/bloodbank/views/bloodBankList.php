@@ -16,7 +16,7 @@
                         <!-- Form Section Start -->
                         <article class="row p-b-10">
                             <form name="csvDownload" id="" action="<?php echo site_url('bloodbank/createCSV'); ?>" method="post">
-                               <aside class="col-lg-1 col-md-2 col-sm-2 col-xs-6 m-tb-xs-3">
+                               <aside class="col-md-2 col-sm-2 col-xs-6 m-tb-xs-3">
                                     <a href="<?php echo base_url();?>index.php/bloodbank/Addbloodbank" class="btn btn-appointment waves-effect waves-light" title="Add New Blood Bank"><i class="fa fa-plus"></i> Add </a>
                                 </aside>
                                 <aside class="col-md-2 col-sm-2 col-xs-6 visible-xs m-tb-xs-3 pull-right">
