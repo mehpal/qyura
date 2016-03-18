@@ -31,7 +31,7 @@
 
                         </div>
                         <div class="col-md-3">
-                            <button type="button" class="btn btn-primary btn-block avatar-save" id="savebtn">Done</button>
+                            <button type="button" class="btn btn-primary btn-block avatar-save" id="savebtnUpload" onClick="checkValidFileUploads('<?php echo base_url();?>');">Done</button>
                         </div>
                     </div>
                 </div>

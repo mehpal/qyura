@@ -168,4 +168,23 @@ class MY_Controller extends CI_Controller
     }
    
     
+    function checkFileUploadValidation(){
+
+        if (!empty($_POST['avatar_file'])) {
+               $path = realpath(FCPATH . 'assets/diagnosticsImage/');
+               $upload_data = $this->input->post('avatar_file');
+               $upload_data = json_decode($upload_data);
+               
+               if($upload_data->width > 120 && $upload_data->height > 120){
+                   $response = array('state' => 200);  
+               }else{
+                  $response = array('state' => 400, 'message' => 'Height and Width must exceed 150px.');   
+               }
+                echo json_encode($response);
+        }else{
+             $response = array('state' => 400, 'message' => 'Please select avtar');
+             echo json_encode($response);
+        }
+        
+    }
 }
