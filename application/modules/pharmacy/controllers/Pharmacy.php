@@ -9,6 +9,7 @@ class Pharmacy extends MY_Controller {
         $this->load->library('form_validation');
         $this->load->model('Pharmacy_model');
         $this->load->library('datatables');
+        $this->load->helper('string');
     }
 
     function index() {
@@ -167,8 +168,9 @@ class Pharmacy extends MY_Controller {
             
             $pharmacyInsert = array(
                 'users_email' => $users_email,
-                'users_password' => $users_password,
+                'users_password' => $this->common_model->encryptPassword($users_password),
                 'users_ip_address' => $this->input->ip_address(),
+                'users_username'=> $users_password,
                 'creationTime' => strtotime(date("Y-m-d H:i:s"))
             );
                 $pharmacy_usersId = $this->Pharmacy_model->insertPharmacyUser($pharmacyInsert);
