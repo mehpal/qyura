@@ -1,7 +1,5 @@
 
 <body class="fixed-left">
-   
-
     <!-- Start right Content here -->
         <div class="content-page" ng-app="myApp">
             <!-- Start content -->
@@ -259,7 +257,7 @@
                                                           <input type="hidden" id="countryId" name="countryId" value="<?php echo $hospitalData[0]->hospital_countryId;?>" />
                                                           <input type="hidden" id="cityId" name="cityId" value="<?php echo $hospitalData[0]->hospital_cityId;?>" />
                                                         <aside id="newDetail" style="display:<?php echo $showStatus;?>;">
-                                                            <article class="clearfix m-b-10">
+                                                            <article class="clearfix m-t-10">
                                                                 <label for="cemail" class="control-label col-md-4 col-sm-4">Hospital Name :</label>
                                                                 <div class="col-md-8 col-sm-8">
                                                                     <input class="form-control" id="hospital_name" name="hospital_name" type="text" value="<?php echo $hospitalData[0]->hospital_name;?>">
@@ -268,10 +266,10 @@
                                                                 </div>
                                                             </article>
                                                             
-                                                            <article class="clearfix m-b-10">
+                                                            <article class="clearfix">
                                                                 <label for="cname" class="control-label col-md-4  col-sm-4">Hospital Type :</label>
                                                                 <div class="col-md-8 col-sm-8">
-                                                                    <select class="selectpicker" data-width="100%" name="hospital_type" id="hospital_type" tabindex="-98">
+                                                                    <select class="form-control selectpicker" data-width="100%" name="hospital_type" id="hospital_type" tabindex="-98">
                                                                         <?php if(!empty($hospitalType)){ foreach($hospitalType as $key=>$val) {
                                                                                 $selected = '';
                                                                                 if(isset($hospitalData[0]->hospital_type) && $hospitalData[0]->hospital_type == $val->hospitalType_id){ $selected = 'selected = "selected" ';  }
@@ -280,19 +278,11 @@
                                                                     </select>
                                                                 </div>
                                                             </article>
-                                                            
-                                                            
-                                                            
-                                                            <article class="clearfix m-b-10">
+                                                         
+                                                            <article class="clearfix m-t-10">
                                                             <label for="cemail" class="control-label col-md-4 col-sm-4">Address :</label>
-                                                            
-                                                            
                                                             <div class="col-md-8 col-sm-8">
-                                                                
-                                                                
-                                                                <aside class="row">
-                                                                     <div class="col-md-6 col-sm-6">
-                                                                         <select class="selectpicker" data-width="100%" name="hospital_countryId" onchange ="fetchState(this.value)">
+                                                                         <select class="form-control selectpicker" data-width="100%" name="hospital_countryId" onchange ="fetchState(this.value)">
                                                                              <option value="" >Select Country</option>
                                                                              <?php if(!empty($allCountry)):
                                                                                     foreach($allCountry as $country):?>
@@ -302,11 +292,12 @@
                                                                          </select>
                                                                          <label class="error" style="display:none;" id="error-hospital_countryId"> please select a country</label>
                                                                          <label class="error" > <?php echo form_error("hospital_countryId"); ?></label>
-                                                                     </div>
-                                                                          
-                                                                     <div class="col-md-6 col-sm-6 m-t-xs-10">
-                                                                         <?php // print_r($allStates); ?>
-                                                                            <select class="selectpicker" data-width="100%" name="hospital_stateId" onchange ="fetchCity(this.value)" id="hospital_stateId">
+                                                                   </div>
+                                                              </article>
+                                                            <article class="clearfix">
+                                                            	<div class="col-sm-offset-4 col-sm-8">
+                                                                           <?php // print_r($allStates); ?>
+                                                                            <select class="form-control selectpicker" data-width="100%" name="hospital_stateId" onchange ="fetchCity(this.value)" id="hospital_stateId">
                                                                                 <?php foreach($allStates as $key=>$val) {?>
                                                                                   <option <?php if($hospitalData[0]->hospital_stateId == $val->state_id):echo"selected";endif;?> value="<?php echo $val->state_id;?>"><?php echo $val->state_statename;?></option>
                                                                                  <?php }?>
@@ -316,14 +307,11 @@
                                                                          
                                                                          <label class="error" style="display:none;" id="error-hospital_stateId"> please select a state</label>
                                                                          <label class="error" > <?php echo form_error("hospital_stateId"); ?></label>
-                                                                     </div>
-                                                                          
-                                                                 </aside>
-                                                                
-                                                                
-                                                                <aside class="row">
-                                                                     <div class="col-md-6 col-sm-6">
-                                                                        <select class="selectpicker" data-width="100%" name="hospital_cityId" id="hospital_cityId">
+                                                            	</div>
+                                                            </article>
+                                                            <article class="clearfix">
+                                                            	<div class="col-sm-offset-4 col-sm-8">
+                                                                <select class="form-control selectpicker" data-width="100%" name="hospital_cityId" id="hospital_cityId">
                                                                               <?php foreach($allCities as $key=>$val) {?>
                                                                                 <option <?php if($hospitalData[0]->hospital_cityId == $val->city_id):echo"selected";endif;?> value="<?php echo $val->city_id;?>"><?php echo $val->city_name;?></option>
                                                                               <?php }?>
@@ -331,21 +319,22 @@
                                                                             </select>
                                                                       <label class="error" style="display:none;" id="error-hospital_cityId"> please select a city</label>
                                                                        <label class="error" > <?php echo form_error("hospital_cityId"); ?></label>
-                                                                     </div>
-                                                                          
-                                                                     <div class="col-md-6 col-sm-6">
+                                                                </div>
+                                                             </article>
+                                                                
+                                                                <article class="clearfix">
+                                                         <div class="col-sm-offset-4 col-sm-8">
                                                                         <input type="text" class="form-control" id="hospital_zip" name="hospital_zip" placeholder="700001" maxlength="6" onkeypress="return isNumberKey(event)" value="<?php if(isset($hospitalData[0]->hospital_zip)){ echo $hospitalData[0]->hospital_zip; }?>">
                                                                              <label class="error" style="display:none;" id="error-hospital_zip"> Zip code should be numeric and 6 digit long</label>
 
                                                                             <label class="error" id="error-hospital_zip"  > <?php echo form_error("hospital_zip"); ?></label>
                                                                      </div>
-                                                                          
-                                                                 </aside>
+                                                                </article>
                                                                
                                                                 
                                                                 
-                                                           <article class="form-group m-lr-0">
-                                                                <label class="control-label col-md-4" for="cname">Address is manual</label>
+                                                           <article class="clearfix">
+                                                                <label class="control-label col-md-4" for="cname">Manual Address:</label>
                                                                 <div class="col-md-8">
                                                                     <aside class="radio radio-info radio-inline">
                                                                         <input type="radio"  name="isManual" value="1" id="isManual" onclick="IsAdrManual(this.value)">
@@ -357,25 +346,33 @@
                                                                     </aside>
                                                                 </div>
                                                             </article>
-                                                                
-                                                                <div class="clearfix m-t-10">
-                                                                    <input class="form-control" id="geocomplete" name="hospital_address" type="text" value="<?php if(isset($hospitalData[0]->hospital_address)){ echo $hospitalData[0]->hospital_address; }?>" >
+                                                            <article class="clearfix m-t-10">
+                                                              <div class="col-sm-8 col-sm-offset-4">
+  <input class="form-control" id="geocomplete" name="hospital_address" type="text" value="<?php if(isset($hospitalData[0]->hospital_address)){ echo $hospitalData[0]->hospital_address; }?>" >
                                                                    <label class="error" style="display:none;" id="error-geocomplete"> please enter an address</label>
 
 
-                                                                   <input name="lat" required="" type="text" readonly   id="lat" value="<?php echo $hospitalData[0]->hospital_lat;?>"  />
+                                                               </div>
+                                                            </article>
+                                                                
+                                                            <article class="clearfix m-t-10">
+                                                              <div class="col-sm-8 col-sm-offset-4">
+                                                                <aside class="row">
+                                                                  <div class="col-sm-6">
+                                                                   <input class="form-control" name="lat" required="" type="text" readonly   id="lat" value="<?php echo $hospitalData[0]->hospital_lat;?>"  />
                                                                  <label class="error" style="display:none;" id="error-lat">Please enter the correct format for latitude</label>
-                                                                <input name="lng" required="" type="text" readonly  id="lng" value="<?php echo $hospitalData[0]->hospital_long;?>"  />
+                                                                 </div>
+                                                                 <div class="col-sm-6">
+                                                                <input class="form-control" name="lng" required="" type="text" readonly  id="lng" value="<?php echo $hospitalData[0]->hospital_long;?>"  />
                                                                  <label class="error" style="display:none;" id="error-lng"> Please enter the correct format for longitude</label>
-
-                                                                    <label class="error" > <?php echo form_error("hospital_address"); ?></label>
+<label class="error" > <?php echo form_error("hospital_address"); ?></label>
                                                                 </div>
-                                                        </div>
-                                                            
-                                                            
-                                                        </article>
+                                                              </aside>
+                                                           </div>
+                                                         </article>
+                                                        
 
-                                                            <article class="clearfix m-b-10 ">
+                                                            <article class="clearfix m-t-10 ">
                                                                 <label for="cemail" class="control-label col-md-4 col-sm-4">Phone Numbers :</label>
                                                                 <div class="col-md-8 col-sm-8">
                                                                     <?php 
@@ -391,7 +388,7 @@
                                                                                 <option value="1" <?php if($moreExpolde[0] == '1'){ echo 'selected';}?>>+1</option>
                                                                             </select>
                                                                         </div>
-                                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10 m-t-xs-10">
+                                                                        <div class="col-lg-9 col-md-8 col-sm-8 col-xs-10 m-t-xs-10">
                                                                             <input type="text" class="form-control" name="hospital_phn[]" id="hospital_phn<?php echo ($i+1);?>" placeholder="9837000123" value="<?php echo $moreExpolde[1];?>" maxlength="10" onblur="checkNumber(<?php echo $i;?>)"/>
                                                                         </div>
                                                                        
@@ -399,7 +396,7 @@
                                                                     <br />
                                                                     <?php $moreExpolde ='';}?>
                                                                
-                                                                    <p class="m-t-10">* If it is landline, include Std code with number </p>
+                                                                    <p class="m-t-0">* If it is landline, include Std code with number </p>
                                                                 </div>
                                                             </article>
                                                             <article class="clearfix">

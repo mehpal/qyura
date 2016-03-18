@@ -23,7 +23,7 @@
                             <a href="<?php echo site_url('hospital/addHospital') ?>" class="btn btn-appointment waves-effect waves-light" title="Add New Hospital"><i class="fa fa-plus"></i> Add</a>
                         </aside>
                         <aside class="col-md-2 col-sm-2 m-t-xs-2">
-                            <select class="selectpicker" data-width="100%" name="hospital_stateId" id="hospital_stateId" data-size="4" onchange ="fetchCity(this.value)">
+                            <select class="form-control selectpicker" data-width="100%" name="hospital_stateId" id="hospital_stateId" data-size="4" onchange ="fetchCity(this.value)">
 
                                 <option value="">Select State</option>
                                 <?php foreach ($allStates as $key => $val) { ?>
@@ -33,7 +33,7 @@
 
                         </aside>
                         <aside class="col-md-3 col-sm-3 m-tb-xs-3">
-                            <select type="text" name="hospital_cityId" class="selectpicker" data-width="100%"  placeholder="Search" id="hospital_cityId" data-size="4" />
+                            <select type="text" name="hospital_cityId" class="form-control selectpicker" data-width="100%"  placeholder="Search" id="hospital_cityId" data-size="4" />
                             <option value=>Select Your City</option>
                             <!-- <option>Delhi</option>
                              <option>Kolkata</option> -->
