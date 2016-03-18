@@ -179,5 +179,16 @@ class Common_model extends MY_Model {
         $this->db->order_by("city_name", "asc");
         return $this->db->get()->result();
     }
+    
+    function getUserRoles($con,$single=true)
+    {
+        $this->db->select('usersRoles_userId as userId,usersRoles_roleId as roleId,usersRoles_parentRole as parentRole,usersRoles_parentId as parentId');
+        $this->db->from('qyura_usersRoles');
+        $this->db->where($con);
+        if($single)
+        return  $this->db->get()->row();
+        else
+        return  $this->db->get()->result();
+    }
 
 }

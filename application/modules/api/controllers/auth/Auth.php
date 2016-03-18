@@ -68,8 +68,6 @@ class Auth extends MyRest {
 
         $update = false;
 
-
-
         $additional_data = array('users_logintype' => $logintype, 'users_mobile' => isset($_POST['mobileNo']) ? $_POST['mobileNo'] : '');
 
         if ($logintype) {
@@ -745,7 +743,7 @@ class Auth extends MyRest {
 
                     $update = $this->db->affected_rows() == 1;
                     
-                    $user = $this->unsetUserConfidentialData($user);
+                    $user = $this->getUserDetailByIdentity('','',$user->users_id);
                     
                     $response = array('status' => TRUE, 'message' => $this->ion_auth_api->messages(), 'userDetail'=>$user);
                     
