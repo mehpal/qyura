@@ -640,7 +640,7 @@ class Auth_model extends CI_Model {
         
             $message = $this->lang->line('otp_message');
             $message = str_replace('%s', $activationCode, $message);
-            $msgId  = $this->clickatell->send_message('91'.$userdata->users_mobile,$message);
+            $msgId  = $this->clickatell->send_message($userdata->users_mobile,$message);
             $subject = 'Qyura OTP';
             $to = $userdata->users_email;
             $headers = 'MIME-Version: 1.0' . "\r\n";

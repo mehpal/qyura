@@ -58,7 +58,7 @@ class Auth extends MyRest {
         $this->bf_form_validation->set_rules('name', 'name', 'required|callback__alpha_dash_space|max_length[80]|xss_clean');
         $this->bf_form_validation->set_rules('logintype', 'logintype', 'required|min_length[1]|max_length[1]|numeric|xss_clean');
 
-        $this->bf_form_validation->set_rules('pushToken', 'push token', 'required|min_length[8]|max_length[255]|xss_clean');
+        $this->bf_form_validation->set_rules('pushToken', 'push token', 'min_length[8]|max_length[255]|xss_clean');
         $this->bf_form_validation->set_rules('udid', 'udid', 'required|min_length[8]|max_length[255]|xss_clean');
         $this->bf_form_validation->set_rules('device', 'device', 'required|min_length[1]|max_length[1]|numeric|xss_clean');
         $this->bf_form_validation->set_rules('dob', 'Date of Birth', 'trim|xss_clean|valid_date[y-m-d,-]');
@@ -74,7 +74,7 @@ class Auth extends MyRest {
             //|is_unique[qyura_userSocial.userSocial_socialId,userSocial_deleted=0]
 
             $this->bf_form_validation->set_rules('socialId', 'Social Id', 'trim|required|xss_clean');
-            $this->bf_form_validation->set_rules('image', 'Image', 'trim|required|xss_clean');
+            $this->bf_form_validation->set_rules('image', 'Image', 'trim|xss_clean');
 
             $this->bf_form_validation->set_rules('email', 'email', 'required|valid_email|xss_clean');
 
@@ -492,7 +492,7 @@ class Auth extends MyRest {
         $this->bf_form_validation->set_rules('identity', 'Identity', 'required|xss_clean');
         $this->bf_form_validation->set_rules('password', 'Password', 'required|xss_clean');
 
-        $this->bf_form_validation->set_rules('pushToken', 'push token', 'required|min_length[8]|max_length[255]|xss_clean');
+        $this->bf_form_validation->set_rules('pushToken', 'push token', 'min_length[8]|max_length[255]|xss_clean');
         $this->bf_form_validation->set_rules('udid', 'udid', 'required|min_length[8]|max_length[255]|xss_clean');
         $this->bf_form_validation->set_rules('device', 'device', 'required|min_length[1]|max_length[1]|numeric|xss_clean');
 
@@ -679,7 +679,7 @@ class Auth extends MyRest {
         //$logintype = (int) $this->input->post('logintype');
 
         $this->bf_form_validation->set_rules('pwIsUpdate', 'pwIsUpdate', 'required|min_length[1]|max_length[1]|numeric|xss_clean');
-        $this->bf_form_validation->set_rules('pushToken', 'push token', 'required|min_length[8]|max_length[255]|xss_clean');
+        $this->bf_form_validation->set_rules('pushToken', 'push token', 'min_length[8]|max_length[255]|xss_clean');
         $this->bf_form_validation->set_rules('udid', 'udid', 'required|min_length[8]|max_length[255]|xss_clean');
         $this->bf_form_validation->set_rules('device', 'device', 'required|min_length[1]|max_length[1]|numeric|xss_clean');
         $this->bf_form_validation->set_rules('notification', 'notification', 'required|min_length[1]|max_length[1]|numeric|xss_clean');

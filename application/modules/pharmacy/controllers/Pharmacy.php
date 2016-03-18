@@ -90,6 +90,11 @@ class Pharmacy extends MY_Controller {
 
         $this->bf_form_validation->set_rules('pharmacy_mmbrTyp', 'Membership Type', 'required|trim');
         $this->bf_form_validation->set_rules('users_email', 'Users Email', 'required|valid_email|trim|callback__checkUserExist');
+        $this->bf_form_validation->set_rules('userId', 'Users Id', 'trim');
+        $this->bf_form_validation->set_rules('isValid', 'isValid Id', 'trim');
+        $this->bf_form_validation->set_rules('isEmergency', 'Emergency', 'trim|required');
+        
+        
 
         if ($this->bf_form_validation->run() === FALSE) {
             $data = array();

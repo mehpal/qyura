@@ -146,7 +146,7 @@ class Ion_auth_api {
         
                 $message = $this->lang->line('mobile_forgot_password');
                 $message = str_replace('%s', $password, $message);
-                $msgId  = $this->clickatell->send_message('91'.$user->users_mobile,$message);    
+                $msgId  = $this->clickatell->send_message($user->users_mobile,$message);    
 
                 if (!$this->config->item('use_ci_email', 'auth_conf_api')) {
                     $this->set_message('forgot_password_successful');
@@ -465,7 +465,7 @@ class Ion_auth_api {
             
             
             //dump($message);
-            $msgId  = $this->clickatell->send_message('91'.$additional_data['users_mobile'],$message);
+            $msgId  = $this->clickatell->send_message($additional_data['users_mobile'],$message);
             //dump($msgId);
             
                 

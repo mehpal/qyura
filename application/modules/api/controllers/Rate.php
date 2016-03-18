@@ -46,7 +46,9 @@ class Rate extends MyRest {
                 $isInsert = $this->rate_model->addRate('qyura_ratings',$data);
 
                 if($isInsert){
-                    $response = array('status' => TRUE, 'message' => 'Thanks for rating' );
+                    
+                    $rat = $this->rate_model->getRating($rateTo);
+                    $response = array('status' => TRUE, 'message' => 'Thanks for rating', 'rat'=>$rat );
                     $this->response($response, 200);
                 }
                 else
