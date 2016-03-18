@@ -130,5 +130,50 @@ var resizefunc = [];
             }
         });
     }
+    
+    //Load Custom delete View for all
+    function deleteFn(controller,cfunction,id)
+    {   
+        var url = '<?php echo site_url();?>/'+controller+'/'+cfunction;
+        bootbox.confirm("Do you want to delete it?", function(result) {
+           if(result)
+           {
+            $.ajax({
+                type:'post',
+                data:{'id':id},
+                url:url,
+                async:false,
+                success:function(data){
+                        if(data)
+                        {
+//                            location.reload(true);
+                        }
+                    }
+                }); 
+            }
+        }); 
+    }
+
+//Load Custom enable View for all
+    function enableFn(controller,cfunction,id,status)
+    {   if(status == 1)var con_mess = "Desable";else con_mess = "Enable";      
+           var url = '<?php echo site_url();?>/'+controller+'/'+cfunction;
+            bootbox.confirm('Do you want to ' + con_mess.toLowerCase() + ' it?', function(result) {
+            if(result) {
+                $.ajax({
+                    type:'post',
+                    data:{'id': id,'status': status},
+                    url:url,
+                    async:false,
+                    success:function(data){
+                        if(data)
+                        {
+//                            location.reload(true);
+                        }
+                    }
+                }); 
+            }
+        }); 
+    }
 </script>
 

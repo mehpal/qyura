@@ -576,7 +576,8 @@ class Diagnostic extends MY_Controller {
     function addDiagnosticAwards() {
         $Id = $this->input->post('diagnosticId');
         $Awards_awardsName = $this->input->post('diaAwards_awardsName');
-        $awardData = array('diagnosticAwards_awardsName' => $Awards_awardsName, 'diagnosticAwards_diagnosticId' => $Id, 'creationTime' => strtotime(date("Y-m-d H:i:s")));
+        $diagnosticAwards_awardYear = $this->input->post('dialAwards_awardsYear');
+        $awardData = array('diagnosticAwards_awardsName' => $Awards_awardsName, 'diagnosticAwards_diagnosticId' => $Id, 'creationTime' => strtotime(date("Y-m-d H:i:s")),'diagnosticAwards_awardYear' => $diagnosticAwards_awardYear,);
         $option = array(
             'table' => 'qyura_diagnosticAwards',
             'data' => $awardData
@@ -589,7 +590,8 @@ class Diagnostic extends MY_Controller {
     function editDiagnosticAwards() {
         $id = $this->input->post('awardsId');
         $awardsName = $this->input->post('diaAwards_awardsName');
-        $updatedData = array('diagnosticAwards_awardsName' => $awardsName);
+        $edit_awardsYear = $this->input->post('edit_awardsYear');
+        $updatedData = array('diagnosticAwards_awardsName' => $awardsName, 'diagnosticAwards_awardYear' => $edit_awardsYear );
         $updatedDataWhere = array('diagnosticAwards_id' => $id);
         $option = array(
             'table' => 'qyura_diagnosticAwards',
@@ -625,7 +627,7 @@ class Diagnostic extends MY_Controller {
         $showAwards = '';
         if ($dataAwards) {
             foreach ($dataAwards as $key => $val) {
-                $showAwards .='<li>' . $val->diagnosticAwards_awardsName . '</li>';
+                $showAwards .='<li>' . $val->diagnosticAwards_awardsName . ' ' . $val->diagnosticAwards_awardYear . '</li>';
             }
         } else {
             $showAwards = 'Add Awards';
@@ -643,18 +645,37 @@ class Diagnostic extends MY_Controller {
         if ($dataAwards) {
             $showTotalAwards = '';
             foreach ($dataAwards as $key => $val) {
-                $showTotalAwards .= '<div class="row m-t-10">
-        <div class="col-md-8 col-sm-8 col-xs-8">
-           <input type="text" class="form-control" name="hospitalAwards_awardsName" id=' . $val->diagnosticAwards_id . ' value="' . $val->diagnosticAwards_awardsName . '" placeholder="FICCI Healthcare " />
-         </div>
-           <div class="col-md-2 col-sm-2 col-xs-2">
+                
+//                $showTotalAwards .= '<div class="row m-t-10">
+//        <div class="col-md-8 col-sm-8 col-xs-8">
+//           <input type="text" class="form-control" name="hospitalAwards_awardsName" id=' . $val->diagnosticAwards_id . ' value="' . $val->diagnosticAwards_awardsName . '" placeholder="FICCI Healthcare " />
+//         </div>
+//           <div class="col-md-2 col-sm-2 col-xs-2">
+//            <a onclick="editAwards(' . $val->diagnosticAwards_id . ')"><i class="fa fa-pencil-square-o fa-2x m-t-5 label-plus" title="Edit Awards"></i></a>
+//           </div>
+//
+//          <div class="col-md-2 col-sm-2 col-xs-2">
+//          <a onclick="deleteAwards(' . $val->diagnosticAwards_id . ')"><i class="fa fa-times fa-2x m-t-5 label-plus" title="Delete Awards"></i></a>
+//          </div>
+//         </div>';
+                $showTotalAwards .= '     <aside class="row">
+                                <div class="col-md-12 ">
+                                     <input type="text" class="form-control" name="hospitalAwards_awardsName" id=' . $val->diagnosticAwards_id . ' value="' . $val->diagnosticAwards_awardsName . '" placeholder="FICCI Healthcare " />
+                                    <input type="text" class="form-control m-t-20" placeholder="2016" id=year' . $val->diagnosticAwards_id . ' name="diagnostic_awardsyear" value="' . $val->diagnosticAwards_awardYear . '"/>
+                                </div>
+                                
+                                <div class="clearfix">
+                                    
+                                    <div class="col-md-12  col-xs-2 text-right">
             <a onclick="editAwards(' . $val->diagnosticAwards_id . ')"><i class="fa fa-pencil-square-o fa-2x m-t-5 label-plus" title="Edit Awards"></i></a>
+                  <a onclick="deleteAwards(' . $val->diagnosticAwards_id . ')"><i class="fa fa-times fa-2x m-t-5 label-plus" title="Delete Awards"></i></a>
            </div>
 
-          <div class="col-md-2 col-sm-2 col-xs-2">
-          <a onclick="deleteAwards(' . $val->diagnosticAwards_id . ')"><i class="fa fa-times fa-2x m-t-5 label-plus" title="Delete Awards"></i></a>
-          </div>
-         </div>';
+          
+                                </div>
+                             
+                            </aside>';
+                
             }
         } else {
             $showTotalAwards = 'Add Awards';
@@ -662,6 +683,11 @@ class Diagnostic extends MY_Controller {
 
         echo $showTotalAwards;
         exit;
+        
+        
+    
+        
+        
     }
 
     /**
