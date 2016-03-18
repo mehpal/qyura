@@ -651,8 +651,9 @@
                                                                 <?php if(!empty($insurance)){
                                                                     foreach($insurance as $key => $val){    
                                                                  ?>
-                                                                <div class="col-md-3 col-sm-6">
-                                                                    <img src="<?php echo base_url()?>assets/insurance/<?php echo $val->insurance_img;?>" class="img-responsive center-block">
+                                                                <div class="col-md-3 col-sm-6 part-ins">
+                                                                    <a class="delete-ins"><i class="fa fa-close"></i></a>
+                                                                    <img src="<?php echo base_url()?>assets/insurance/<?php echo $val->insurance_img;?>" class="img-responsive center-block img-ins">
                                                                     <h5><?php echo $val->insurance_Name;?></h5>
                                                                 </div>
                                                                 <?php }} else{?>
@@ -1358,7 +1359,7 @@
                                                 <article class="clearfix m-b-10">
                                                     <label for="cemail" class="control-label col-md-4 col-sm-4">Registered Email Id :</label>
                                                     <div class="col-md-8 col-sm-8">
-                                                        <input class="form-control" id="users_email" name="users_email" type="users_email" required="" value="<?php echo $hospitalData[0]->users_email; ?>" onblur="checkEmailFormat()">
+                                                        <input class="form-control" id="users_email" name="users_email" type="users_email" required="" value="<?php echo $hospitalData[0]->users_email; ?>" onblur="return checkUserExistence(this.value),checkEmailFormat()">
                                                         <label class="error" style="display:none;" id="error-users_email"> please enter Email id Properly</label>
                                                         <label class="error" style="display:none;" id="error-users_email_check"> Email Already Exits!</label>
                                                         <label class="error" style="display:none;" id="error-users_emailBlank"> Email id field should not be blank!</label>

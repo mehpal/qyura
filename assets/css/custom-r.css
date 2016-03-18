@@ -1520,3 +1520,16 @@ font-size:13px;
 {
 margin-right:5px;
 }
+
+a.delete-ins
+{
+display:none;
+position:absolute;
+right:20px;
+float:right;
+color:#f00;
+}
+.part-ins:hover > .delete-ins
+{
+display:block;
+}
