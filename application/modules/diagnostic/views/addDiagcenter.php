@@ -83,7 +83,7 @@
 
                                     <article class="clearfix">
                                         <div class="col-md-8  col-sm-8 col-sm-offset-4">
- <input type="text" class="form-control" id="diagnostic_zip" name="diagnostic_zip" placeholder="700001" value="<?php echo set_value('diagnostic_zip'); ?>" maxlength="6" onkeypress="return isNumberKey(event)"/>
+ <input type="text" class="form-control" id="diagnostic_zip" name="diagnostic_zip" placeholder="700001" value="<?php echo set_value('diagnostic_zip'); ?>" maxlength="6" />
                                                     <label class="error" style="display:none;" id="error-diagnostic_zip"> please enter a zip code</label>
                                                     <label class="error" style="display:none;" id="error-diagnostic_zip_long"> zip code should be 6 digit long</label>
                                                     <label class="error" > <?php echo form_error("diagnostic_zip"); ?></label>
@@ -91,7 +91,7 @@
                                     </article>
                                     
                                      <article class="clearfix">
-                                        <label class="control-label col-md-4" for="cname">manual</label>
+                                        <label class="control-label col-md-4" for="cname">Manual</label>
                                         <div class="col-md-8">
                                             <aside class="radio radio-info radio-inline">
                                                 <input type="radio"  name="isManual" value="1" id="isManual" onclick="IsAdrManual(this.value)">
@@ -183,6 +183,18 @@
                                         </div>
                                     </article>
 
+                                    <article class="clearfix m-t-10">
+                                        <label class="control-label col-md-4 col-sm-4" for="cname">About Us :</label>
+                                        <div class="col-md-8  col-sm-8">
+                                           <textarea value="" id="aboutUs" name="aboutUs" class="form-control"> </textarea>
+                                            <label class="error"> </label>
+                                          
+                                            <label class="error" style="display:none;" id="error-aboutUs"> Please write about the diagnostic!</label>
+                                            <label class="error" > <?php echo form_error("aboutUs"); ?></label>
+                                           
+                                        </div>
+                                    </article>
+                                    
                                     
                                 </div>
                                 <!-- .form -->
@@ -299,7 +311,7 @@
                                     <article class="clearfix m-t-10">
                                         <label for="cname" class="control-label col-md-4 col-sm-4">Registered Email Id:</label>
                                         <div class="col-md-8 col-sm-8">
-                                            <input type="email" class="form-control" id="users_email" name="users_email" placeholder="abc@gmail.com" onblur="checkEmailFormat(),check_email(this.value);" value="<?php echo set_value('users_email'); ?>"/>
+                                            <input type="email" class="form-control" id="users_email" name="users_email" placeholder="abc@gmail.com" onblur="checkEmailFormat();" value="<?php echo set_value('users_email'); ?>"/>
                                             <label class="error" style="display:none;" id="error-users_email"> please enter Email id Properly</label>
                                             <label class="error" style="display:none;" id="error-users_email_check"> Email Already Exits!</label>
                                             <label class="error" > <?php echo form_error("users_email"); ?></label>

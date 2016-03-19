@@ -877,6 +877,31 @@ if ( ! function_exists('validation_errors'))
 }
 
 /**
+ * Validation Error array
+ *
+ * Returns all the errors associated with a form submission.  This is a helper
+ * function for the form validation class.
+ *
+ * @access	public
+ * @param	string
+ * @param	string
+ * @return	string
+ */
+
+if ( ! function_exists('ajax_validation_errors'))
+{
+	function ajax_validation_errors($prefix = '', $suffix = '')
+	{
+		if (FALSE === ($OBJ =& _get_validation_object()))
+		{
+			return '';
+		}
+
+		return $OBJ->ajax_error_string($prefix, $suffix);
+	}
+}
+
+/**
  * Validation Error string
  *
  * Returns all the errors associated with a form submission.  This is a helper

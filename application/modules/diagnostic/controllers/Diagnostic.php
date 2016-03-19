@@ -153,6 +153,8 @@ class Diagnostic extends MY_Controller {
         $this->bf_form_validation->set_rules('users_email', 'Users Email', 'required|valid_email|trim');
         $this->bf_form_validation->set_rules('users_password', 'Password', 'trim|required|matches[cnfPassword]');
         $this->bf_form_validation->set_rules('cnfPassword', 'Password Confirmation', 'trim|required');
+        
+        $this->bf_form_validation->set_rules('isManual', 'Manual', 'trim|required');
 
         if (empty($_FILES['avatar_file']['name'])) {
             $this->bf_form_validation->set_rules('avatar_file', 'File', 'required');
@@ -211,6 +213,8 @@ class Diagnostic extends MY_Controller {
             $diagnostic_mblNo = $this->input->post('diagnostic_mblNo');
             $diagnostic_zip = $this->input->post('diagnostic_zip');
             $diagnostic_dsgn = $this->input->post('diagnostic_dsgn');
+            
+            $isManual = $this->input->post('isManual');
 
             $users_email_status = $this->input->post('users_email_status');
             if($users_email_status == ''){
@@ -246,6 +250,7 @@ class Diagnostic extends MY_Controller {
                     'diagnostic_name' => $diagnostic_name,
                     'diagnostic_dsgn' => $diagnostic_dsgn,
                     'diagnostic_address' => $diagnostic_address,
+                    'isManual' => $isManual,
                     'diagnostic_cntPrsn' => $diagnostic_cntPrsn,
                     'diagnostic_phn' => $finalNumber,
                     'diagnostic_usersId' => $diagnostic_usersId,
@@ -260,6 +265,7 @@ class Diagnostic extends MY_Controller {
                     'diagnostic_mblNo' => $diagnostic_mblNo,
                     'diagnostic_lat' => $this->input->post('lat'),
                     'diagnostic_long' => $this->input->post('lng'),
+                    'diagnostic_aboutUs' => $this->input->post('aboutUs'),
                     'inherit_status' => 1
                 );
                 // dump($insertData);exit;
@@ -323,6 +329,8 @@ class Diagnostic extends MY_Controller {
         $this->bf_form_validation->set_rules('diagnostic_cntPrsn', 'Contact Person', 'required|trim');
         $this->bf_form_validation->set_rules('diagnostic_zip', 'Diagnostic Zip', 'required|trim');
         $this->bf_form_validation->set_rules('diagnostic_dsgn', 'Diagnostic Designation', 'required|trim');
+        $this->bf_form_validation->set_rules('isManual', 'Manual', 'trim|required');
+
 
         if ($this->bf_form_validation->run() === FALSE) {
             $data = array();
@@ -357,12 +365,14 @@ class Diagnostic extends MY_Controller {
                 'diagnostic_stateId' => $this->input->post('diagnostic_stateId'),
                 'diagnostic_cityId' => $this->input->post('diagnostic_cityId'),
                 'diagnostic_address' => $this->input->post('diagnostic_address'),
+                'isManual' => $this->input->post('isManual'),
                 'diagnostic_zip' => $this->input->post('diagnostic_zip'),
                 'diagnostic_dsgn' => $this->input->post('diagnostic_dsgn'),
                 'diagnostic_phn' => $finalNumber,
                 'diagnostic_cntPrsn' => $this->input->post('diagnostic_cntPrsn'),
                 'diagnostic_lat' => $this->input->post('lat'),
                 'diagnostic_long' => $this->input->post('lng'),
+                'diagnostic_aboutUs' => $this->input->post('diagnostic_aboutUs'),
                 'modifyTime' => strtotime(date("Y-m-d H:i:s"))
             );
 

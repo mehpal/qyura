@@ -142,6 +142,12 @@ class Ambulance extends MY_Controller {
         $this->bf_form_validation->set_rules('ambulance_mmbrTyp', 'Membership Type', 'required|trim');
         $this->bf_form_validation->set_rules('users_email', 'Users Email', 'required|valid_email|trim');
         $this->bf_form_validation->set_rules('users_mobile', 'User Mobile', 'required|trim|numeric');
+        
+        $this->bf_form_validation->set_rules('lat', 'Latitude', 'required|trim|numeric');
+        $this->bf_form_validation->set_rules('lng', 'Longitude', 'required|trim|numeric');
+        $this->bf_form_validation->set_rules('userId', 'Users Id', 'trim');
+        $this->bf_form_validation->set_rules('isValid', 'isValid Id', 'trim');
+        
         if (empty($_FILES['avatar_file']['name'])) {
             $this->bf_form_validation->set_rules('avatar_file', 'File', 'required');
         }
@@ -214,17 +220,24 @@ class Ambulance extends MY_Controller {
             );
             //print_r($insertData);
             //exit;
-             $users_email_status = $this->input->post('users_email_status');
-            if($users_email_status == ''){
+           //  $users_email_status = $this->input->post('users_email_status');
+             
+             $userId = $this->input->post('userId');
+              
+            if($userId == ''){
             $users_email = $this->input->post('users_email');
+             $users_password = random_string('alnum');
             $ambulanceInsert = array(
                 'users_email' => $users_email,
                 'users_ip_address' => $this->input->ip_address(),
+                'users_password' => $this->common_model->encryptPassword($users_password),
+                'users_username'=> $users_password,
                 'users_mobile' => $this->input->post('users_mobile'),
                 'creationTime' => strtotime(date("Y-m-d H:i:s"))
             );
             $ambulance_usersId = $this->Ambulance_model->insertAmbulanceUser($ambulanceInsert);
             $usersRoles_parentId = 0;
+            $usersRoles_parentRole = 0;
             }
             else {
                 $ambulance_usersId = $users_email_status;

@@ -50,10 +50,11 @@
                                         <label for="cname" class="control-label col-md-4 col-sm-4">Pharmacy Type :</label>
                                         <div class="col-md-8 col-sm-8">
                                             <select class="form-control selectpicker" data-width="100%" name="pharmacyType">
-                                                <option value="1" selected>Medicine</option>
-                                                <option value="2">Homyopathic</option>
-                                                <option value="3">Herbal</option>
+                                                <option <?php echo  set_select('pharmacyType', '1', TRUE); ?> value="1" selected>Medicine</option>
+                                                <option <?php echo  set_select('pharmacyType', '2'); ?> value="2">Homyopathic</option>
+                                                <option <?php echo  set_select('pharmacyType', '3'); ?> value="3">Herbal</option>
                                             </select>
+                                            <label class="error" > <?php echo form_error("pharmacyType"); ?></label>
                                         </div>
                                     </article>
 
@@ -104,14 +105,15 @@
                                                 <option>Kolkata</option>
                                                 <option>Delhi</option>-->
                                             </select>
-                                            <label class="error" style="display:none;" id="error-pharmacy_cityId"> please select a city</label>
+                                            <label class="error"  style="display:none;" id="error-pharmacy_cityId"> please select a city</label>
+                                            <label class="error" > <?php echo form_error("pharmacy_cityId"); ?></label>
 
                                         </div>
                                     </article>
 
                                     <article class="clearfix m-t-10">
                                         <div class="col-sm-8 col-sm-offset-4">
-                                            <input type="text" class="form-control" id="pharmacy_zip" name="pharmacy_zip" placeholder="700001" maxlength="6" onkeypress="return isNumberKey(event)" />
+                                            <input type="text" class="form-control" id="pharmacy_zip" value="<?php echo set_value('pharmacy_zip'); ?>" name="pharmacy_zip" placeholder="700001" maxlength="6" onkeypress="return isNumberKey(event)" />
                                             <label class="error" style="display:none;" id="error-pharmacy_zip"> please enter a zip code</label>  
                                             <label class="error" style="display:none;" id="error-pharmacy_zip_long"> zip code should be 6 digit long</label>
                                             <label class="error" > <?php echo form_error("pharmacy_zip"); ?></label>
@@ -123,11 +125,11 @@
                                         <label class="control-label col-md-4" for="cname">Manual:</label>
                                         <div class="col-md-8">
                                             <aside class="radio radio-info radio-inline">
-                                                <input type="radio"  name="isManual" value="1" id="isManual" onclick="IsAdrManual(this.value)">
+                                                <input <?php echo set_radio('isManual', '1'); ?> type="radio"  name="isManual" value="1" id="isManual" onclick="IsAdrManual(this.value)">
                                                 <label for="inlineRadio1"> Yes</label>
                                             </aside>
                                             <aside class="radio radio-info radio-inline">
-                                                <input type="radio" checked="" name="isManual" value="0" id="isManual" onclick="IsAdrManual(this.value)">
+                                                <input type="radio" <?php echo set_radio('isManual', '0'); ?> checked="" name="isManual" value="0" id="isManual" onclick="IsAdrManual(this.value)">
                                                 <label for="inlineRadio2"> No</label>
                                             </aside>
                                         </div>
@@ -214,7 +216,7 @@
                                                 <label for="inlineRadio1"> Yes</label>
                                             </aside>
                                             <aside class="radio radio-info radio-inline">
-                                                <input <?php echo set_radio('isEmergency', 'option2'); ?> type="radio" id="isEmergency_no" value="option2" name="isEmergency">
+                                                <input <?php echo set_radio('isEmergency', '0'); ?> type="radio" id="isEmergency_no" value="0" name="isEmergency">
                                                 <label for="inlineRadio2"> No</label>
                                             </aside>
                                             <label class="error" > <?php echo form_error("isEmergency"); ?></label>
@@ -230,7 +232,7 @@
                         <div class="col-md-12 m-t-20 m-b-20">
                             <input type="hidden" value="1" name="isValid" value="<?php echo set_value('isValid'); ?>" id="isValid">
                             <input type="hidden" value="<?php echo set_value('userId'); ?>" name="userId" id="userId">
-                            <label class="error" style="display:none;" id="error-userexist">Blood bank already exist!</label>
+                            <label class="error" style="display:none;" id="error-userexist">Pharmacy already exist!</label>
 
                             <button class="btn btn-danger waves-effect pull-right" type="button">Reset</button>
                             <div>

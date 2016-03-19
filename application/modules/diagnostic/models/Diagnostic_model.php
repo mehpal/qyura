@@ -66,7 +66,7 @@ class Diagnostic_model extends CI_Model {
     }
 
     function fetchdiagnosticData($condition = NULL) {
-        $this->db->select('diag.diagnostic_mbrTyp,diag.diagnostic_email,diag.diagnostic_dsgn,diag.diagnostic_id,diag.diagnostic_zip,diag.diagnostic_usersId,diag.diagnostic_name,diag.diagnostic_phn,diag.diagnostic_address,City.city_name,diag.diagnostic_img,diag.diagnostic_cntPrsn,usr.users_email,diag.diagnostic_lat,diag.diagnostic_long,usr.users_id,diag.diagnostic_countryId,diag.diagnostic_stateId,diag.diagnostic_cityId,usr.users_mobile,diag.diagnostic_background_img');
+        $this->db->select('diag.diagnostic_aboutUs,diag.diagnostic_mbrTyp,diag.diagnostic_email,diag.diagnostic_dsgn,diag.diagnostic_id,diag.diagnostic_zip,diag.diagnostic_usersId,diag.diagnostic_name,diag.diagnostic_phn,diag.diagnostic_address,City.city_name,diag.diagnostic_img,diag.diagnostic_cntPrsn,usr.users_email,diag.diagnostic_lat,diag.diagnostic_long,usr.users_id,diag.diagnostic_countryId,diag.diagnostic_stateId,diag.diagnostic_cityId,usr.users_mobile,diag.diagnostic_background_img, diag.isManual');
         $this->db->from('qyura_diagnostic AS diag');
         $this->db->join('qyura_city AS City', 'City.city_id = diag.diagnostic_cityId', 'left');
         $this->db->join('qyura_users AS usr', 'usr.users_id = diag.diagnostic_usersId', 'left');

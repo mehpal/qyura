@@ -378,6 +378,24 @@ $('.thumbnail').click(function () {
     });
 });
 
+$("#diagnostic_aboutUs").on("keyup",function(){
+   // console.log("hiiii");
+    var maxLength = "255";
+
+    var minLength = "0";
+
+    var length = $(this).val().length;
+
+    length = minLength + length;
+    
+    if(length > 255){
+        $('#error-diagnostic_aboutUs').text("Maximum length for this section is 255 characters. Kindly rewrite it.");
+    }else{
+        $('#error-diagnostic_aboutUs').text("");
+    }
+//    $('#chars').text(length);
+});
+
 //$(".select2").select2({
 //    width: '100%'
 //});

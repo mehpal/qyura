@@ -136,6 +136,12 @@
                                                                 <label for="cemail" class="control-label col-md-4 col-sm-4">Designation:</label>
                                                                 <p class="col-md-8 col-sm-8 t-xs-left"><?php if(!empty($diagnosticData)): echo $diagnosticData[0]->diagnostic_dsgn; endif;?></p>
                                                             </article>
+
+        <article class="clearfix m-b-10">
+                                                                <label for="cemail" class="control-label col-md-4 col-sm-4">About Us:</label>
+                                                                <p class="col-md-8 col-sm-8 t-xs-left"><?php if(!empty($diagnosticData)): echo $diagnosticData[0]->diagnostic_aboutUs; endif;?></p>
+                                                            </article>
+
 <div class="map_canvas"></div>
                                                         </section>
                                                         <section id="newDetail" style="display:none;">     
@@ -195,14 +201,14 @@
 								</article>
                                                                     
                                                                      <article class="clearfix m-t-10">
-                                                                            <label class="control-label col-md-4" for="cname">manual</label>
+                                                                            <label class="control-label col-md-4" for="cname">Manual</label>
                                                                             <div class="col-md-8">
                                                                                 <aside class="radio radio-info radio-inline">
-                                                                                    <input type="radio"  name="isManual" value="1" id="isManual" onclick="IsAdrManual(this.value)">
+                                                                                    <input type="radio" <?php if(!empty($diagnosticData) &&   $diagnosticData[0]->isManual == 1 ){ echo 'checked="checked" '; }?>  name="isManual" value="1" id="isManual" onclick="IsAdrManual(this.value)">
                                                                                     <label for="inlineRadio1"> Yes</label>
                                                                                 </aside>
                                                                                 <aside class="radio radio-info radio-inline">
-                                                                                    <input type="radio" checked="" name="isManual" value="0" id="isManual" onclick="IsAdrManual(this.value)">
+                                                                                    <input type="radio" <?php if(!empty($diagnosticData) &&   $diagnosticData[0]->isManual == 0 ){ echo 'checked="checked" '; }?> name="isManual" value="0" id="isManual" onclick="IsAdrManual(this.value)">
                                                                                     <label for="inlineRadio2"> No</label>
                                                                                 </aside>
                                                                             </div>
@@ -223,11 +229,11 @@
                                                                   <div class="col-sm-8 col-sm-offset-4">
                                                             <aside class="row">
                                                         <div class="col-sm-6">
-                                                        <input name="lat" class="form-control" required="" type="text"   id="lat" readonly="" value="<?php echo $diagnosticData[0]->diagnostic_lat;?>" />
+                                                        <input name="lat" class="form-control" required="" type="text"   id="lat" <?php if(!empty($diagnosticData) &&   $diagnosticData[0]->isManual == 0 ){ echo 'readonly="readonly" '; }?> value="<?php echo $diagnosticData[0]->diagnostic_lat;?>" />
                                                         <label class="error" style="display:none;" id="error-lat">Please enter the correct format for latitude</label>
                                                          </div>
                                                          <div class="col-sm-6 m-t-xs-10">
-                                                         <input name="lng" class="form-control" required="" type="text"  id="lng" readonly=""  value="<?php echo $diagnosticData[0]->diagnostic_long;?>"/>
+                                                         <input name="lng" class="form-control" required="" type="text"  id="lng" <?php if(!empty($diagnosticData) &&   $diagnosticData[0]->isManual == 0 ){ echo 'readonly="readonly" '; }?> value="<?php echo $diagnosticData[0]->diagnostic_long;?>"/>
                                                         <label class="error" style="display:none;" id="error-lng"> Please enter the correct format for longitude</label>
                                                                     </div>
                                                                   </aside>
@@ -275,6 +281,26 @@
                                             <label class="error" > <?php echo form_error("diagnostic_dsgn"); ?></label>
                                                                 </div>
                                                             </article>
+                                                     
+                                                     
+                                                     
+                                                     <article class="clearfix m-t-10">
+                                                            <label for="cemail" class="control-label col-md-4 col-sm-4">About Us :</label>
+                                                            <div class="col-md-8 col-sm-8">
+<!--                                                                    <input class="form-control" id="diagnostic_aboutUs" name="diagnostic_aboutUs" type="text" required="" value="" />-->
+                                                                <textarea value="" id="diagnostic_aboutUs" name="diagnostic_aboutUs" class="form-control"><?php if (!empty($diagnosticData)): echo $diagnosticData[0]->diagnostic_aboutUs;
+endif; ?></textarea>
+                                                                <!--<span class="error"  id="aboutLimit">255</span> characters remaining-->
+                                                                <label class="error" id="error-diagnostic_aboutUs"></label>
+                                                                <label class="error" > <?php echo form_error("diagnostic_aboutUs"); ?></label>
+                                                            </div>
+                                                        </article>
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
                                                             <article class="clearfix ">
                                                                 <div class="col-md-12 m-t-20 m-b-20">
                                                                     <button type="submit" class="btn btn-success waves-effect waves-light pull-right" onclick="return validationDiagnosticEdit()">Update</button>

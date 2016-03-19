@@ -86,13 +86,16 @@ class Pharmacy extends MY_Controller {
         //$this->bf_form_validation->set_rules('pharmacy_phn[]', 'Pharmacy Mobile No', 'required|trim');
         $this->bf_form_validation->set_rules('pharmacy_zip', 'Pharmacy Zip', 'required|trim|min_length[6]|max_length[6]');
         $this->bf_form_validation->set_rules('pharmacy_address', 'Pharmacy Address', 'required|trim');
-        $this->bf_form_validation->set_rules('pharmacy_address', 'Pharmacy Address', 'required|trim');
+        
 
         $this->bf_form_validation->set_rules('pharmacy_mmbrTyp', 'Membership Type', 'required|trim');
         $this->bf_form_validation->set_rules('users_email', 'Users Email', 'required|valid_email|trim|callback__checkUserExist');
         $this->bf_form_validation->set_rules('userId', 'Users Id', 'trim');
         $this->bf_form_validation->set_rules('isValid', 'isValid Id', 'trim');
         $this->bf_form_validation->set_rules('isEmergency', 'Emergency', 'trim|required');
+        $this->bf_form_validation->set_rules('isManual', 'Manual', 'trim');
+        $this->bf_form_validation->set_rules('pharmacyType', 'Pharmacy Type', 'trim');
+        
         
         
 
@@ -180,9 +183,11 @@ class Pharmacy extends MY_Controller {
             );
                 $pharmacy_usersId = $this->Pharmacy_model->insertPharmacyUser($pharmacyInsert);
                 $usersRoles_parentId = 0;
+                $usersRoles_parentRole = 0;
             } else {
                 $pharmacy_usersId = $userId;
                 $usersRoles_parentId = $userId;
+                $usersRoles_parentRole = ROLE_HOSPITAL;
             }
             
             if ($pharmacy_usersId) {
@@ -191,6 +196,7 @@ class Pharmacy extends MY_Controller {
                     'usersRoles_userId' => $pharmacy_usersId,
                     'usersRoles_roleId' => ROLE_PHARMACY,
                     'usersRoles_parentId' => $usersRoles_parentId,
+                    'usersRoles_parentRole'=>$usersRoles_parentRole,
                     'creationTime' => strtotime(date("Y-m-d H:i:s"))
                 );
 
